@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: measurements-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: measurements
+  template:
+    metadata:
+      labels:
+        app: measurements
+    spec:
+      containers:
+        - name: measurements
+          image: gerbrecht/measurements
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: measurements-srv
+spec:
+  selector:
+    app: measurements
+  ports:
+    - name: measurements
+      protocol: TCP
+      port: 4001
+      targetPort: 4001

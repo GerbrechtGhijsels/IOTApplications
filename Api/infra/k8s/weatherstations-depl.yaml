@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weatherstations -depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weatherstations
+  template:
+    metadata:
+      labels:
+        app: weatherstations
+    spec:
+      containers:
+        - name: weatherstations
+          image: gerbrecht/weatherstations
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: weatherstations-clusterip-srv
+spec:
+  selector:
+    app: weatherstations
+  ports:
+    - name: weatherstations
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
