@@ -24,9 +24,9 @@ router.post(
     const { title, price } = req.body;
 
     const measurement = Measurement.build({
-      title,
-      price,
-      userId: req.currentUser!.id,
+      id,
+      stn,
+      YYYYMMDD,
     });
     await measurement.save();
 
