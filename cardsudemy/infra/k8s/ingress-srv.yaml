@@ -7,18 +7,14 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
-    - host: ticketing.dev
+    - host: measuring.dev
       http:
         paths:
           - path: /api/users/?(.*)
             backend:
               serviceName: auth-srv
               servicePort: 3000
-          - path: /api/tickets/?(.*)
+          - path: /api/measurements/?(.*)
             backend:
-              serviceName: tickets-srv
-              servicePort: 3000
-          - path: /?(.*)
-            backend:
-              serviceName: client-srv
+              serviceName: measurements-srv
               servicePort: 3000

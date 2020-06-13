@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tickets-depl
+  name: measurements-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tickets
+      app: measurements
   template:
     metadata:
       labels:
-        app: tickets
+        app: measurements
     spec:
       containers:
-        - name: tickets
-          image: stephengrider/tickets
+        - name: measurements
+          image: gg/measurements
           env:
             - name: MONGO_URI
-              value: 'mongodb://tickets-mongo-srv:27017/tickets'
+              value: 'mongodb://measurements-mongo-srv:27017/measurements'
             - name: JWT_KEY
               valueFrom:
                 secretKeyRef:
@@ -27,12 +27,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tickets-srv
+  name: measurements-srv
 spec:
   selector:
-    app: tickets
+    app: measurements
   ports:
-    - name: tickets
+    - name: measurements
       protocol: TCP
       port: 3000
       targetPort: 3000
