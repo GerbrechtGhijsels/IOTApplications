@@ -32,7 +32,7 @@ router.post(
 
     const event = {
       type: 'measurement:created',
-      data: ticket,
+      data: measurement,
     };
     stan.publish('measurement:created', JSON.stringify(event), () => {
       console.log('Measurement creation event published');
