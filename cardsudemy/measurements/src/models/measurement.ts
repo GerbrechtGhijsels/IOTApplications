@@ -1,9 +1,48 @@
 import mongoose from 'mongoose';
 
 interface MeasurementAttrs {
-  title: string;
-  price: number;
-  userId: string;
+  id: number;
+  stn: number;
+  YYYYMMDD: number;
+  DDVEC: number;
+  FHVEC: number;
+  FG: number;
+  FHX: number;
+  FHXH: number;
+  FHN: number;
+  FHNH: number;
+  FXX: number;
+  FXXH: number;
+  TG: number;
+  TN: number;
+  TNH: number;
+  TX: number;
+  TXH: number;
+  T10N: number;
+  T10NH: number;
+  SQ: number;
+  SP: number;
+  Q: number;
+  DR: number;
+  RH: number;
+  RHX: number;
+  RHXH: number;
+  PG: number;
+  PX: number;
+  PXH: number;
+  PN: number;
+  PNH: number;
+  VVN: number;
+  VVNH: number;
+  VVX: number;
+  VVXH: number;
+  NG: number;
+  UG: number;
+  UX: number;
+  UXH: number;
+  UN: number;
+  UNH: number;
+  EV24: number;
 }
 
 interface MeasurementDoc extends mongoose.Document {

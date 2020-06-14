@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stations-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stations
+  template:
+    metadata:
+      labels:
+        app: stations
+    spec:
+      containers:
+        - name: stations
+          image: gg/stations
+          env:
+            - name: MONGO_URI
+              value: 'mongodb://stations-mongo-srv:27017/stations'
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stations-srv
+spec:
+  selector:
+    app: stations
+  ports:
+    - name: stations
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

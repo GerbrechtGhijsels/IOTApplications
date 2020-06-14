@@ -1,7 +1,8 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import nats from 'node-nats-streaming';
-import { requireAuth, validateRequest } from './middlewares';
+import { requireAuth  } from '../middlewares/require-auth';
+import { validateRequest } from '../middlewares/validate-request';
 import { Measurement } from '../models/measurement';
 
 const router = express.Router();
@@ -21,14 +22,98 @@ router.post(
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-    const { title, price } = req.body;
+    const { 
+      id,
+      stn,
+      YYYYMMDD,
+      DDVEC,
+      FHVEC,
+      FG,
+      FHX,
+      FHXH,
+      FHN,
+      FHNH,
+      FXX,
+      FXXH,
+      TG,
+      TN,
+      TNH,
+      TX,
+      TXH,
+      T10N,
+      T10NH,
+      SQ,
+      SP,
+      Q,
+      DR,
+      RH,
+      RHX,
+      RHXH,
+      PG,
+      PX,
+      PXH,
+      PN,
+      PNH,
+      VVN,
+      VVNH,
+      VVX,
+      VVXH,
+      NG,
+      UG,
+      UX,
+      UXH,
+      UN,
+      UNH,
+      EV24,
+     } = req.body;
 
     const measurement = Measurement.build({
       id,
       stn,
       YYYYMMDD,
+      DDVEC,
+      FHVEC,
+      FG,
+      FHX,
+      FHXH,
+      FHN,
+      FHNH,
+      FXX,
+      FXXH,
+      TG,
+      TN,
+      TNH,
+      TX,
+      TXH,
+      T10N,
+      T10NH,
+      SQ,
+      SP,
+      Q,
+      DR,
+      RH,
+      RHX,
+      RHXH,
+      PG,
+      PX,
+      PXH,
+      PN,
+      PNH,
+      VVN,
+      VVNH,
+      VVX,
+      VVXH,
+      NG,
+      UG,
+      UX,
+      UXH,
+      UN,
+      UNH,
+      EV24,
     });
     await measurement.save();
+
+
 
     const event = {
       type: 'measurement:created',
