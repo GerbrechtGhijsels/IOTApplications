@@ -1,5 +1,5 @@
 {
-  "name": "@ggmeasurements/common",
+  "name": "common",
   "version": "1.0.12",
   "description": "",
   "main": "./build/index.js",

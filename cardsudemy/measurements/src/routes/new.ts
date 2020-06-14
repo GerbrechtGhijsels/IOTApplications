@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import nats from 'node-nats-streaming';
-import { requireAuth, validateRequest } from '@ggmeasurements/common';
+import { requireAuth, validateRequest } from './middlewares';
 import { Measurement } from '../models/measurement';
 
 const router = express.Router();

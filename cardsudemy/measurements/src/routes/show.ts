@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { NotFoundError } from '@ggmeasurements/common';
+import { NotFoundError } from '../errors';
 import { Measurement } from '../models/measurement';
 
 const router = express.Router();
