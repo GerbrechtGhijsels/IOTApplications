@@ -1,5 +1,5 @@
 import express from 'express';
-import { currentUser } from '@ggmeasurements/common';
+import { currentUser } from '../middlewares';
 
 const router = express.Router();
 
