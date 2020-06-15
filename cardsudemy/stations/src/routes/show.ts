@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { NotFoundError } from '../errors/not-found-error';
+import { NotFoundError } from '../common';
 import { Station } from '../models/station';
 
 const router = express.Router();

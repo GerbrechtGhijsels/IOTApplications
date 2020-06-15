@@ -7,3 +7,7 @@ docker build -t gg/stations:1.0 .
 docker build -t gg/auth:1.0 .
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml
+
+skaffold.dev
+
+kubectl get pods

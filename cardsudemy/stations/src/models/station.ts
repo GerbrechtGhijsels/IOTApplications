@@ -5,7 +5,7 @@ interface StationAttrs {
   LON: number;
   LAT: number;
   ALT: number;
-  NAME: string
+  NAME: string;
 }
 
 interface StationDoc extends mongoose.Document {

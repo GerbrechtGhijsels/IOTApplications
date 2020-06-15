@@ -1,22 +1,20 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import nats from 'node-nats-streaming';
-import { requireAuth } from '../middlewares/require-auth';
-import { validateRequest } from '../middlewares/validate-request';
+import { validateRequest, requireAuth } from '../common';
 import { Station } from '../models/station';
+import { StationCreatedPublisher } from '../events/publishers/station-created-publisher';
+import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
-const stan = nats.connect('stationing', 'stations', {
-  url: 'http://nats-srv:4222',
-});
 
 router.post(
   '/api/stations',
   requireAuth,
   [
-    body('title').not().isEmpty().withMessage('Title is required'),
-    body('price')
+    body('STN').not().isEmpty().withMessage('STN is required'),
+    body('LON')
       .isFloat({ gt: 0 })
       .withMessage('Price must be greater than 0'),
   ],
@@ -39,12 +37,12 @@ router.post(
     });
     await station.save();
 
-    const event = {
-      type: 'station:created',
-      data: station,
-    };
-    stan.publish('station:created', JSON.stringify(event), () => {
-      console.log('station creation event published');
+    await new StationCreatedPublisher(natsWrapper.client).publish({
+      STN: station.STN,
+      LON: station.LON,
+      LAT: station.LAT,
+      ALT: station.ALT,
+      NAME: station.NAME,
     });
 
     res.status(201).send(station);
