@@ -14,8 +14,16 @@ spec:
     spec:
       containers:
         - name: stations
-          image: gg/stations
+          image: gg/stations:1.0
           env:
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: measuring
             - name: MONGO_URI
               value: 'mongodb://stations-mongo-srv:27017/stations'
             - name: JWT_KEY

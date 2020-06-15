@@ -3,11 +3,11 @@ import { body } from 'express-validator';
 import nats from 'node-nats-streaming';
 import { requireAuth } from '../middlewares/require-auth';
 import { validateRequest } from '../middlewares/validate-request';
-import { station } from '../models/station';
+import { Station } from '../models/station';
 
 const router = express.Router();
 
-const stan = nats.connect('measuring', 'stations', {
+const stan = nats.connect('stationing', 'stations', {
   url: 'http://nats-srv:4222',
 });
 
@@ -30,7 +30,7 @@ router.post(
       NAME,
      } = req.body;
 
-    const station = station.build({
+    const station = Station.build({
       STN,
       LON,
       LAT,

@@ -1,10 +1,10 @@
 import express, { Request, Response } from 'express';
-import { station } from '../models/station';
+import { Station } from '../models/station';
 
 const router = express.Router();
 
 router.get('/api/stations', async (req: Request, res: Response) => {
-  const stations = await station.find({});
+  const stations = await Station.find({});
 
   res.send(stations);
 });

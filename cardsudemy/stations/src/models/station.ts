@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-interface stationAttrs {
+interface StationAttrs {
   STN: number;
   LON: number;
   LAT: number;
@@ -8,7 +8,7 @@ interface stationAttrs {
   NAME: string
 }
 
-interface stationDoc extends mongoose.Document {
+interface StationDoc extends mongoose.Document {
   STN: number;
   LON: number;
   LAT: number;
@@ -16,8 +16,8 @@ interface stationDoc extends mongoose.Document {
   NAME: string;
 }
 
-interface stationModel extends mongoose.Model<stationDoc> {
-  build(attrs: stationAttrs): stationDoc;
+interface StationModel extends mongoose.Model<StationDoc> {
+  build(attrs: StationAttrs): StationDoc;
 }
 
 const stationschema = new mongoose.Schema(
@@ -53,10 +53,10 @@ const stationschema = new mongoose.Schema(
   }
 );
 
-stationschema.statics.build = (attrs: stationAttrs) => {
-  return new station(attrs);
+stationschema.statics.build = (attrs: StationAttrs) => {
+  return new Station(attrs);
 };
 
-const station = mongoose.model<stationDoc, stationModel>('station', stationschema);
+const Station = mongoose.model<StationDoc, StationModel>('Station', stationschema);
 
-export { station };
+export { Station };

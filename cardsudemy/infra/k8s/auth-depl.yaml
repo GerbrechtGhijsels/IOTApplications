@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: gg/auth
+          image: gg/auth:1.0
           env:
             - name: MONGO_URI
               value: 'mongodb://auth-mongo-srv:27017/auth'

@@ -24,7 +24,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-     - image: gg/stations
+    - image: gg/stations
       context: stations
       docker:
         dockerfile: Dockerfile
