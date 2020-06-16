@@ -11,3 +11,5 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/mast
 skaffold.dev
 
 kubectl get pods
+
+mongoimport --uri "mongodb://stations-mongo-srv:27017/stations" --collection stations --drop --file knmi_stations_2018.json
