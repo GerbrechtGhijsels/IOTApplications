@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: measurements
-          image: gg/measurements:1.0
+          image: gg/measurements
           env:
             - name: NATS_CLIENT_ID
               valueFrom:

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: stations
-          image: gg/stations:1.0
+          image: gg/stations
           env:
             - name: NATS_CLIENT_ID
               valueFrom:
