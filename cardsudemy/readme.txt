@@ -30,9 +30,9 @@ DB ports
 -----------------------------------------------------------
 db Import
 
-mongoimport --host 127.0.0.1:30007 --jsonArray --db weather --collection stations --drop --file stations.json
+mongoimport --host 127.0.0.1:30007 --jsonArray --db stations --collection stations --drop --file stations.json
 
-mongoimport --host 127.0.0.1:30008 --jsonArray --db weather --collection stations --drop --file measurements.json
+mongoimport --host 127.0.0.1:30008 --jsonArray --db measurements --collection stations --drop --file measurements.json
 
 -----------------------------------------------------------
 

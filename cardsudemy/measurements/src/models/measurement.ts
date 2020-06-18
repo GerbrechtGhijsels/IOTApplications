@@ -3,91 +3,91 @@ import mongoose from 'mongoose';
 interface MeasurementAttrs {
   id: number;
   stn: number;
-  YYYYMMDD: number;
-  DDVEC: number;
-  FHVEC: number;
-  FG: number;
-  FHX: number;
-  FHXH: number;
-  FHN: number;
-  FHNH: number;
-  FXX: number;
-  FXXH: number;
-  TG: number;
-  TN: number;
-  TNH: number;
-  TX: number;
-  TXH: number;
-  T10N: number;
-  T10NH: number;
-  SQ: number;
-  SP: number;
-  Q: number;
-  DR: number;
-  RH: number;
-  RHX: number;
-  RHXH: number;
-  PG: number;
-  PX: number;
-  PXH: number;
-  PN: number;
-  PNH: number;
-  VVN: number;
-  VVNH: number;
-  VVX: number;
-  VVXH: number;
-  NG: number;
-  UG: number;
-  UX: number;
-  UXH: number;
-  UN: number;
-  UNH: number;
-  EV24: number;
+  yyyymmdd: number;
+  ddvec: number;
+  fhvec: number;
+  fg: number;
+  fhx: number;
+  fhxh: number;
+  fhn: number;
+  fhnh: number;
+  fxx: number;
+  fxxh: number;
+  tg: number;
+  tn: number;
+  tnh: number;
+  tx: number;
+  txh: number;
+  t10n: number;
+  t10nh: number;
+  sq: number;
+  sp: number;
+  q: number;
+  dr: number;
+  rh: number;
+  rhx: number;
+  rhxh: number;
+  pg: number;
+  px: number;
+  pxh: number;
+  pn: number;
+  pnh: number;
+  vvn: number;
+  vvnh: number;
+  vvx: number;
+  vvxh: number;
+  ng: number;
+  ug: number;
+  ux: number;
+  uxh: number;
+  un: number;
+  unh: number;
+  ev24: number;
 }
 
 interface MeasurementDoc extends mongoose.Document {
   id: number;
   stn: number;
-  YYYYMMDD: number;
-  DDVEC: number;
-  FHVEC: number;
-  FG: number;
-  FHX: number;
-  FHXH: number;
-  FHN: number;
-  FHNH: number;
-  FXX: number;
-  FXXH: number;
-  TG: number;
-  TN: number;
-  TNH: number;
-  TX: number;
-  TXH: number;
-  T10N: number;
-  T10NH: number;
-  SQ: number;
-  SP: number;
-  Q: number;
-  DR: number;
-  RH: number;
-  RHX: number;
-  RHXH: number;
-  PG: number;
-  PX: number;
-  PXH: number;
-  PN: number;
-  PNH: number;
-  VVN: number;
-  VVNH: number;
-  VVX: number;
-  VVXH: number;
-  NG: number;
-  UG: number;
-  UX: number;
-  UXH: number;
-  UN: number;
-  UNH: number;
-  EV24: number;
+  yyyymmdd: number;
+  ddvec: number;
+  fhvec: number;
+  fg: number;
+  fhx: number;
+  fhxh: number;
+  fhn: number;
+  fhnh: number;
+  fxx: number;
+  fxxh: number;
+  tg: number;
+  tn: number;
+  tnh: number;
+  tx: number;
+  txh: number;
+  t10n: number;
+  t10nh: number;
+  sq: number;
+  sp: number;
+  q: number;
+  dr: number;
+  rh: number;
+  rhx: number;
+  rhxh: number;
+  pg: number;
+  px: number;
+  pxh: number;
+  pn: number;
+  pnh: number;
+  vvn: number;
+  vvnh: number;
+  vvx: number;
+  vvxh: number;
+  ng: number;
+  ug: number;
+  ux: number;
+  uxh: number;
+  un: number;
+  unh: number;
+  ev24: number;
 }
 
 interface MeasurementModel extends mongoose.Model<MeasurementDoc> {
@@ -104,125 +104,125 @@ const measurementSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    YYYYMMDD: {
+    yyyymmdd: {
       type: Number,
       required: true,
     },
-    DDVEC: {
+    ddvec: {
       type: Number,
     },
-    FHVEC: {
+    fhvec: {
       type: Number,
     },
-    FG: {
+    fg: {
       type: Number,
     },
-    FHX: {
+    fhx: {
       type: Number,
     },
-    FHXH: {
+    fhxh: {
       type: Number,
     },
-    FHN: {
+    fhn: {
       type: Number,
     },
-    FHNH: {
+    fhnh: {
       type: Number,
     },
-    FXX: {
+    fxx: {
       type: Number,
     },
-    FXXH: {
+    fxxh: {
       type: Number,
     },
-    TG: {
+    tg: {
       type: Number,
     },
-    TN: {
+    tn: {
       type: Number,
     },
-    TNH: {
+    tnh: {
       type: Number,
     },
-    TX: {
+    tx: {
       type: Number,
     },
-    TXH: {
+    txh: {
       type: Number,
     },
-    T10N: {
+    t10n: {
       type: Number,
     },
-    T10NH: {
+    t10nh: {
       type: Number,
     },
-    SQ: {
+    sq: {
       type: Number,
     },
-    SP: {
+    sp: {
       type: Number,
     },
-    Q: {
+    q: {
       type: Number,
     },
-    DR: {
+    dr: {
       type: Number,
     },
-    RH: {
+    rh: {
       type: Number,
     },
-    RHX: {
+    rhx: {
       type: Number,
     },
-    RHXH: {
+    rhxh: {
       type: Number,
     },
-    PG: {
+    pg: {
       type: Number,
     },
-    PX: {
+    px: {
       type: Number,
     },
-    PXH: {
+    pxh: {
       type: Number,
     },
-    PN: {
+    pn: {
       type: Number,
     },
-    PNH: {
+    pnh: {
       type: Number,
     },
-    VVN: {
+    vvn: {
       type: Number,
     },
-    VVNH: {
+    vvnh: {
       type: Number,
     },
-    VVX: {
+    vvx: {
       type: Number,
     },
-    VVXH: {
+    vvxh: {
       type: Number,
     },
-    NG: {
+    ng: {
       type: Number,
     },
-    UG: {
+    ug: {
       type: Number,
     },
-    UX: {
+    ux: {
       type: Number,
     },
-    UXH: {
+    uxh: {
       type: Number,
     },
-    UN: {
+    un: {
       type: Number,
     },
-    UNH: {
+    unh: {
       type: Number,
     },
-    EV24: {
+    ev24: {
       type: Number,
     },
   },

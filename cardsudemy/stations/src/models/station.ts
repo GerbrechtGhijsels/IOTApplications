@@ -1,19 +1,19 @@
 import mongoose from 'mongoose';
 
 interface StationAttrs {
-  STN: number;
-  LON: number;
-  LAT: number;
-  ALT: number;
-  NAME: string;
+  stn: number;
+  lon: number;
+  lat: number;
+  alt: number;
+  name: string;
 }
 
 interface StationDoc extends mongoose.Document {
-  STN: number;
-  LON: number;
-  LAT: number;
-  ALT: number;
-  NAME: string;
+  stn: number;
+  lon: number;
+  lat: number;
+  alt: number;
+  name: string;
 }
 
 interface StationModel extends mongoose.Model<StationDoc> {

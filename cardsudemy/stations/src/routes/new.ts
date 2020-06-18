@@ -13,36 +13,36 @@ router.post(
   '/api/stations',
   requireAuth,
   [
-    body('STN').not().isEmpty().withMessage('STN is required'),
-    body('LON')
+    body('stn').not().isEmpty().withMessage('stn is required'),
+    body('lon')
       .isFloat({ gt: 0 })
       .withMessage('Price must be greater than 0'),
   ],
   validateRequest,
   async (req: Request, res: Response) => {
     const { 
-      STN,
-      LON,
-      LAT,
-      ALT,
-      NAME,
+      stn,
+      lon,
+      lat,
+      alt,
+      name,
      } = req.body;
 
     const station = Station.build({
-      STN,
-      LON,
-      LAT,
-      ALT,
-      NAME,
+      stn,
+      lon,
+      lat,
+      alt,
+      name,
     });
     await station.save();
 
     await new StationCreatedPublisher(natsWrapper.client).publish({
-      STN: station.STN,
-      LON: station.LON,
-      LAT: station.LAT,
-      ALT: station.ALT,
-      NAME: station.NAME,
+      stn: station.stn,
+      lon: station.lon,
+      lat: station.lat,
+      alt: station.alt,
+      name: station.name,
     });
 
     res.status(201).send(station);
