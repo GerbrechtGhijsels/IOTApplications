@@ -32,6 +32,8 @@ db Import
 
 mongoimport --host 127.0.0.1:30007 --jsonArray --db weather --collection stations --drop --file stations.json
 
+mongoimport --host 127.0.0.1:30008 --jsonArray --db weather --collection stations --drop --file measurements.json
+
 -----------------------------------------------------------
 
 Api calls
