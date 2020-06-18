@@ -55,3 +55,34 @@ https://measuring.dev/api/users/signup    POST
 https://measuring.dev/api/users/currentuser  GET
 
 -----------------------------------------------------------
+Skaffold build
+
+
+skaffold.dev
+skaffold dev --no-prune
+
+-----------------------------------------------------------
+docker image build
+
+docker build -t gg/measurements ./measurements
+docker build -t gg/stations ./stations
+docker build -t gg/auth ./auth
+
+-----------------------------------------------------------
+JWT
+
+JWK_KEY = ASDF
+
+kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
+
+-----------------------------------------------------------
+Ingress
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml
+
+-----------------------------------------------------------
+etc/host
+
+sudo nano /etc/hosts   127.0.0.1 measuring.dev
+
+-----------------------------------------------------------
