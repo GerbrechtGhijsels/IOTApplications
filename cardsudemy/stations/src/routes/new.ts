@@ -26,6 +26,7 @@ router.post(
       lat,
       alt,
       name,
+      amountofmeasurements,
      } = req.body;
 
     const station = Station.build({
@@ -34,15 +35,18 @@ router.post(
       lat,
       alt,
       name,
+      amountofmeasurements,
     });
     await station.save();
 
     await new StationCreatedPublisher(natsWrapper.client).publish({
+      id: station.id,
       stn: station.stn,
       lon: station.lon,
       lat: station.lat,
       alt: station.alt,
       name: station.name,
+      amountofmeasurements: station.amountofmeasurements,
     });
 
     res.status(201).send(station);

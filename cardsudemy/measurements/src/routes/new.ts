@@ -1,8 +1,8 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import nats from 'node-nats-streaming';
-import { requireAuth  } from '../middlewares/require-auth';
-import { validateRequest } from '../middlewares/validate-request';
+import { requireAuth  } from '../common';
+import { validateRequest } from '../common';
 import { Measurement } from '../models/measurement';
 
 const router = express.Router();

@@ -1,4 +1,13 @@
 import mongoose from 'mongoose';
+import { updateIfCurrentPlugin } from 'mongoose-update-if-current';
+
+/** 
+# stn    = station nummer;
+# lon    = Longitude;
+# lat    = Latitude;
+# alt    = Altitude;
+# name   = Naam van het station; 
+*/
 
 interface StationAttrs {
   stn: number;
@@ -6,6 +15,7 @@ interface StationAttrs {
   lat: number;
   alt: number;
   name: string;
+  amountofmeasurements: number;
 }
 
 interface StationDoc extends mongoose.Document {
@@ -14,6 +24,7 @@ interface StationDoc extends mongoose.Document {
   lat: number;
   alt: number;
   name: string;
+  amountofmeasurements: number;
 }
 
 interface StationModel extends mongoose.Model<StationDoc> {
@@ -42,6 +53,9 @@ const stationschema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    amountofmeasurements: {
+      type: Number,
+    },
   },
   {
     toJSON: {
@@ -52,6 +66,8 @@ const stationschema = new mongoose.Schema(
     },
   }
 );
+
+stationschema.plugin(updateIfCurrentPlugin);
 
 stationschema.statics.build = (attrs: StationAttrs) => {
   return new Station(attrs);

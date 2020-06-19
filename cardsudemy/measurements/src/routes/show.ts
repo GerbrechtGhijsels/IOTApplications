@@ -1,10 +1,10 @@
 import express, { Request, Response } from 'express';
-import { NotFoundError } from '../errors/not-found-error';
+import { NotFoundError } from '../common';
 import { Measurement } from '../models/measurement';
 
 const router = express.Router();
 
-router.get('/api/measurements/:id', async (req: Request, res: Response) => {
+router.get('/api/measurements/single/:id', async (req: Request, res: Response) => {
   const measurement = await Measurement.findById(req.params.id);
 
   if (!measurement) {
@@ -13,5 +13,6 @@ router.get('/api/measurements/:id', async (req: Request, res: Response) => {
 
   res.send(measurement);
 });
+
 
 export { router as showMeasurementRouter };
