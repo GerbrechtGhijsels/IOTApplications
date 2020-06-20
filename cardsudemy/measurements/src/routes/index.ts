@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.get('/api/measurements/all/:type', async (req: Request, res: Response) => {
   var limit = 100;
-  const measurements = await Measurement.find({}).limit(limit);
+  const measurements = await Measurement.find({}).sort([['yyyymmdd', -1]]).limit(limit);
 
   const collection = new MeasurementsCollection(measurements);
   const iterator = collection.getIterator();

@@ -1,68 +1,376 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: local-example
-  labels:
-    name: local-example
-data:
-  swagger: |
-    openapi: 3.0.0
-    info:
-      title: Callback Example
-      version: 1.0.0
-    paths:
-      /streams:
-        post:
-          description: subscribes a client to receive out-of-band data
-          parameters:
-            - name: callbackUrl
-              in: query
-              required: true
-              description: |
-                the location where data will be sent.  Must be network accessible
-                by the source server
-              schema:
-                type: string
-                format: uri
-                example: https://tonys-server.com
-          responses:
-            '201':
-              description: subscription successfully created
-              content:
-                application/json:
-                  schema:
-                    description: subscription information
-                    required:
-                      - subscriptionId
-                    properties:
-                      subscriptionId:
-                        description: this unique identifier allows management of the subscription
-                        type: string
-                        example: 2531329f-fb09-4ef7-887e-84e648214436
-          callbacks:
-            # the name `onData` is a convenience locator
-            onData:
-              # when data is sent, it will be sent to the `callbackUrl` provided
-              # when making the subscription PLUS the suffix `/data`
-              '{$request.query.callbackUrl}/data':
-                post:
-                  requestBody:
-                    description: subscription payload
-                    content:
-                      application/json:
-                        schema:
-                          properties:
-                            timestamp:
-                              type: string
-                              format: date-time
-                            userData:
-                              type: string
-                  responses:
-                    '202':
-                      description: |
-                        Your server implementation should return this HTTP status code
-                        if the data was received successfully
-                    '204':
-                      description: |
-                        Your server should return this HTTP status code if no longer interested
-                        in further updates
+swagger: '2.0'
+info:
+  description: This is a weather API
+  version: 1.0.0
+  title: Simple weather API
+  # put the contact info for your development or API team
+  contact:
+    email: diekrijggjeniet@pechvoorjou.nl
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+paths:
+  /api/measurements/all:
+    get:
+      summary: measurements
+      operationId: getAllMeasurements
+      description: test
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: searchString
+        description: return overview of measurements
+        required: false
+        type: string
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Measurement'
+        400:
+          description: bad input parameter
+  /api/measurements/single/:id:
+    get:
+      summary: measurements
+      operationId: searchInventory
+      description: test
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: searchString
+        description: return overview of measurements
+        required: false
+        type: string
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Measurement'
+        400:
+          description: bad input parameter
+  /api/measurements/latest/:
+    get:
+      summary: measurements
+      operationId: return latest measurements
+      description: test
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: searchString
+        description: return overview of measurements
+        required: false
+        type: string
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Measurement'
+        400:
+          description: bad input parameter
+  /api/measurement:
+    post:
+      summary: adds an measurement
+      operationId: addMeasurement
+      description: Adds an measurement to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: Measurement
+        description: Measurement item to add
+        schema:
+          $ref: '#/definitions/Measurement'
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists
+  /api/users/currentuser:
+    get:
+      summary: User
+      operationId: return current user
+      description: test
+      produces:
+      - application/json
+      responses:
+        200:
+          description: current user
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        400:
+          description: bad input parameter
+  /api/users/signin:
+    post:
+      summary: sign in user
+      operationId: loginUser
+      description: login in user
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: User
+        description: Login in user
+        schema:
+          $ref: '#/definitions/User'
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists
+  /api/users/signout:
+    post:
+      summary: sign out user
+      operationId: logoutUser
+      description: logout user
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists
+  /api/users/signup:
+    post:
+      summary: sign up user
+      operationId: logupUser
+      description: logup user
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: User
+        description: Login in user
+        schema:
+          $ref: '#/definitions/User'
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists
+  /api/stations/:id:
+    get:
+      summary: station
+      operationId: searchstation
+      description: test
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: id
+        description: return of station
+        required: false
+        type: string
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Station'
+        400:
+          description: bad input parameter
+  /api/stations/all/:
+    get:
+      summary: station
+      operationId: searchstations
+      description: test
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: id
+        description: return overview of statins
+        required: false
+        type: string
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Station'
+        400:
+          description: bad input parameter
+  /api/stations:
+   post:
+      summary: adds an station
+      operationId: addStation
+      description: Adds an station to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: station
+        description: station item to add
+        schema:
+          $ref: '#/definitions/Station'
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists
+definitions:
+  Measurement:
+    required:
+    - id
+    - stn
+    - yyyymmdd
+    properties:
+      id: 
+        type: number
+      stn: 
+        type: number
+      yyyymmdd: 
+        type: number
+      ddvec: 
+        type: number
+      fhvec: 
+        type: number
+      fg: 
+        type: number
+      fhx: 
+        type: number
+      fhxh: 
+        type: number
+      fhn: 
+        type: number
+      fhnh: 
+        type: number
+      fxx: 
+        type: number
+      fxxh: 
+        type: number
+      tg: 
+        type: number
+      tn: 
+        type: number
+      tnh: 
+        type: number
+      tx: 
+        type: number
+      txh: 
+        type: number
+      t10n: 
+        type: number
+      t10nh: 
+        type: number
+      sq: 
+        type: number
+      sp: 
+        type: number
+      q: 
+        type: number
+      dr: 
+        type: number
+      rh: 
+        type: number
+      rhx: 
+        type: number
+      rhxh: 
+        type: number
+      pg: 
+        type: number
+      px: 
+        type: number
+      pxh: 
+        type: number
+      pn: 
+        type: number
+      pnh: 
+        type: number
+      vvn: 
+        type: number
+      vvnh: 
+        type: number
+      vvx: 
+        type: number
+      vvxh: 
+        type: number
+      ng: 
+        type: number
+      ug: 
+        type: number
+      ux:
+        type: number
+      uxh:
+        type: number
+      un:
+        type: number
+      unh:
+        type: number
+      ev24:
+        type: number
+  Station:
+    required:
+    - stn
+    - lon
+    - lat
+    - alt
+    - name
+    properties:
+      stn:
+        type: number
+        example: 303
+      lon:
+        type: number
+        example: 123
+      lat:
+        type: number
+        example: 123
+      alt:
+        type: number
+        example: 123
+      name:
+        type: string
+        example: Heemskerk
+      amountofmeasurements:
+        type: number
+        example: 0
+  User:
+    required:
+    - email
+    - password
+    properties:
+      email:
+        type: string
+        example: test@test.com
+      password:
+        type: string
+        example: password
+# Added by API Auto Mocking Plugin
+host: measuring.dev
+schemes:
+ - https
