@@ -1,376 +1,383 @@
-swagger: '2.0'
-info:
-  description: This is a weather API
-  version: 1.0.0
-  title: Simple weather API
-  # put the contact info for your development or API team
-  contact:
-    email: diekrijggjeniet@pechvoorjou.nl
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: local-example
+  labels:
+    name: local-example
+data:
+    swagger: |
+    info:
+        description: This is a weather API
+        version: 1.0.0
+        title: Simple weather API
+        # put the contact info for your development or API team
+        contact:
+            email: diekrijggjeniet@pechvoorjou.nl
 
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
+        license:
+            name: Apache 2.0
+            url: http://www.apache.org/licenses/LICENSE-2.0.html
 
-paths:
-  /api/measurements/all:
-    get:
-      summary: measurements
-      operationId: getAllMeasurements
-      description: test
-      produces:
-      - application/json
-      parameters:
-      - in: query
-        name: searchString
-        description: return overview of measurements
-        required: false
-        type: string
-      responses:
-        200:
-          description: search results matching criteria
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Measurement'
-        400:
-          description: bad input parameter
-  /api/measurements/single/:id:
-    get:
-      summary: measurements
-      operationId: searchInventory
-      description: test
-      produces:
-      - application/json
-      parameters:
-      - in: query
-        name: searchString
-        description: return overview of measurements
-        required: false
-        type: string
-      responses:
-        200:
-          description: search results matching criteria
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Measurement'
-        400:
-          description: bad input parameter
-  /api/measurements/latest/:
-    get:
-      summary: measurements
-      operationId: return latest measurements
-      description: test
-      produces:
-      - application/json
-      parameters:
-      - in: query
-        name: searchString
-        description: return overview of measurements
-        required: false
-        type: string
-      responses:
-        200:
-          description: search results matching criteria
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Measurement'
-        400:
-          description: bad input parameter
-  /api/measurement:
+    paths:
+    /api/measurements/all:
+        get:
+        summary: measurements
+        operationId: getAllMeasurements
+        description: test
+        produces:
+        - application/json
+        parameters:
+            in: query
+            name: searchString
+            description: return overview of measurements
+            required: false
+            type: string
+        responses:
+            200:
+            description: search results matching criteria
+            schema:
+                type: array
+                items:
+                $ref: '#/definitions/Measurement'
+            400:
+            description: bad input parameter
+    /api/measurements/single/:id:
+        get:
+        summary: measurements
+        operationId: searchInventory
+        description: test
+        produces:
+        - application/json
+        parameters:
+            in: query
+            name: searchString
+            description: return overview of measurements
+            required: false
+            type: string
+        responses:
+            200:
+            description: search results matching criteria
+            schema:
+                type: array
+                items:
+                $ref: '#/definitions/Measurement'
+            400:
+            description: bad input parameter
+    /api/measurements/latest/:
+        get:
+        summary: measurements
+        operationId: return latest measurements
+        description: test
+        produces:
+        - application/json
+        parameters:
+            in: query
+            name: searchString
+            description: return overview of measurements
+            required: false
+            type: string
+        responses:
+            200:
+            description: search results matching criteria
+            schema:
+                type: array
+                items:
+                $ref: '#/definitions/Measurement'
+            400:
+            description: bad input parameter
+    /api/measurement:
+        post:
+        summary: adds an measurement
+        operationId: addMeasurement
+        description: Adds an measurement to the system
+        consumes:
+        - application/json
+        produces:
+        - application/json
+        parameters:
+            in: body
+            name: Measurement
+            description: Measurement item to add
+            schema:
+            $ref: '#/definitions/Measurement'
+        responses:
+            201:
+            description: item created
+            400:
+            description: invalid input, object invalid
+            409:
+            description: an existing item already exists
+    /api/users/currentuser:
+        get:
+        summary: User
+        operationId: return current user
+        description: test
+        produces:
+        - application/json
+        responses:
+            200:
+            description: current user
+            schema:
+                type: array
+                items:
+                $ref: '#/definitions/User'
+            400:
+            description: bad input parameter
+    /api/users/signin:
+        post:
+        summary: sign in user
+        operationId: loginUser
+        description: login in user
+        consumes:
+        - application/json
+        produces:
+        - application/json
+        parameters:
+            in: body
+            name: User
+            description: Login in user
+            schema:
+            $ref: '#/definitions/User'
+        responses:
+            201:
+            description: item created
+            400:
+            description: invalid input, object invalid
+            409:
+            description: an existing item already exists
+    /api/users/signout:
+        post:
+        summary: sign out user
+        operationId: logoutUser
+        description: logout user
+        consumes:
+        - application/json
+        produces:
+        - application/json
+        responses:
+            201:
+            description: item created
+            400:
+            description: invalid input, object invalid
+            409:
+            description: an existing item already exists
+    /api/users/signup:
+        post:
+        summary: sign up user
+        operationId: logupUser
+        description: logup user
+        consumes:
+        - application/json
+        produces:
+        - application/json
+        parameters:
+            in: body
+            name: User
+            description: Login in user
+            schema:
+            $ref: '#/definitions/User'
+        responses:
+            201:
+            description: item created
+            400:
+            description: invalid input, object invalid
+            409:
+            description: an existing item already exists
+    /api/stations/:id:
+        get:
+        summary: station
+        operationId: searchstation
+        description: test
+        produces:
+        - application/json
+        parameters:
+            in: query
+            name: id
+            description: return of station
+            required: false
+            type: string
+        responses:
+            200:
+            description: search results matching criteria
+            schema:
+                type: array
+                items:
+                $ref: '#/definitions/Station'
+            400:
+            description: bad input parameter
+    /api/stations/all/:
+        get:
+        summary: station
+        operationId: searchstations
+        description: test
+        produces:
+        - application/json
+        parameters:
+            in: query
+            name: id
+            description: return overview of statins
+            required: false
+            type: string
+        responses:
+            200:
+            description: search results matching criteria
+            schema:
+                type: array
+                items:
+                $ref: '#/definitions/Station'
+            400:
+            description: bad input parameter
+    /api/stations:
     post:
-      summary: adds an measurement
-      operationId: addMeasurement
-      description: Adds an measurement to the system
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: Measurement
-        description: Measurement item to add
-        schema:
-          $ref: '#/definitions/Measurement'
-      responses:
-        201:
-          description: item created
-        400:
-          description: invalid input, object invalid
-        409:
-          description: an existing item already exists
-  /api/users/currentuser:
-    get:
-      summary: User
-      operationId: return current user
-      description: test
-      produces:
-      - application/json
-      responses:
-        200:
-          description: current user
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/User'
-        400:
-          description: bad input parameter
-  /api/users/signin:
-    post:
-      summary: sign in user
-      operationId: loginUser
-      description: login in user
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: User
-        description: Login in user
-        schema:
-          $ref: '#/definitions/User'
-      responses:
-        201:
-          description: item created
-        400:
-          description: invalid input, object invalid
-        409:
-          description: an existing item already exists
-  /api/users/signout:
-    post:
-      summary: sign out user
-      operationId: logoutUser
-      description: logout user
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      responses:
-        201:
-          description: item created
-        400:
-          description: invalid input, object invalid
-        409:
-          description: an existing item already exists
-  /api/users/signup:
-    post:
-      summary: sign up user
-      operationId: logupUser
-      description: logup user
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: User
-        description: Login in user
-        schema:
-          $ref: '#/definitions/User'
-      responses:
-        201:
-          description: item created
-        400:
-          description: invalid input, object invalid
-        409:
-          description: an existing item already exists
-  /api/stations/:id:
-    get:
-      summary: station
-      operationId: searchstation
-      description: test
-      produces:
-      - application/json
-      parameters:
-      - in: query
-        name: id
-        description: return of station
-        required: false
-        type: string
-      responses:
-        200:
-          description: search results matching criteria
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Station'
-        400:
-          description: bad input parameter
-  /api/stations/all/:
-    get:
-      summary: station
-      operationId: searchstations
-      description: test
-      produces:
-      - application/json
-      parameters:
-      - in: query
-        name: id
-        description: return overview of statins
-        required: false
-        type: string
-      responses:
-        200:
-          description: search results matching criteria
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Station'
-        400:
-          description: bad input parameter
-  /api/stations:
-   post:
-      summary: adds an station
-      operationId: addStation
-      description: Adds an station to the system
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: station
-        description: station item to add
-        schema:
-          $ref: '#/definitions/Station'
-      responses:
-        201:
-          description: item created
-        400:
-          description: invalid input, object invalid
-        409:
-          description: an existing item already exists
-definitions:
-  Measurement:
-    required:
-    - id
-    - stn
-    - yyyymmdd
-    properties:
-      id: 
-        type: number
-      stn: 
-        type: number
-      yyyymmdd: 
-        type: number
-      ddvec: 
-        type: number
-      fhvec: 
-        type: number
-      fg: 
-        type: number
-      fhx: 
-        type: number
-      fhxh: 
-        type: number
-      fhn: 
-        type: number
-      fhnh: 
-        type: number
-      fxx: 
-        type: number
-      fxxh: 
-        type: number
-      tg: 
-        type: number
-      tn: 
-        type: number
-      tnh: 
-        type: number
-      tx: 
-        type: number
-      txh: 
-        type: number
-      t10n: 
-        type: number
-      t10nh: 
-        type: number
-      sq: 
-        type: number
-      sp: 
-        type: number
-      q: 
-        type: number
-      dr: 
-        type: number
-      rh: 
-        type: number
-      rhx: 
-        type: number
-      rhxh: 
-        type: number
-      pg: 
-        type: number
-      px: 
-        type: number
-      pxh: 
-        type: number
-      pn: 
-        type: number
-      pnh: 
-        type: number
-      vvn: 
-        type: number
-      vvnh: 
-        type: number
-      vvx: 
-        type: number
-      vvxh: 
-        type: number
-      ng: 
-        type: number
-      ug: 
-        type: number
-      ux:
-        type: number
-      uxh:
-        type: number
-      un:
-        type: number
-      unh:
-        type: number
-      ev24:
-        type: number
-  Station:
-    required:
-    - stn
-    - lon
-    - lat
-    - alt
-    - name
-    properties:
-      stn:
-        type: number
-        example: 303
-      lon:
-        type: number
-        example: 123
-      lat:
-        type: number
-        example: 123
-      alt:
-        type: number
-        example: 123
-      name:
-        type: string
-        example: Heemskerk
-      amountofmeasurements:
-        type: number
-        example: 0
-  User:
-    required:
-    - email
-    - password
-    properties:
-      email:
-        type: string
-        example: test@test.com
-      password:
-        type: string
-        example: password
-# Added by API Auto Mocking Plugin
-host: measuring.dev
-schemes:
- - https
+        summary: adds an station
+        operationId: addStation
+        description: Adds an station to the system
+        consumes:
+        - application/json
+        produces:
+        - application/json
+        parameters:
+            in: body
+            name: station
+            description: station item to add
+            schema:
+            $ref: '#/definitions/Station'
+        responses:
+            201:
+            description: item created
+            400:
+            description: invalid input, object invalid
+            409:
+            description: an existing item already exists
+    definitions:
+    Measurement:
+        required:
+        - id
+        - stn
+        - yyyymmdd
+        properties:
+        id: 
+            type: number
+        stn: 
+            type: number
+        yyyymmdd: 
+            type: number
+        ddvec: 
+            type: number
+        fhvec: 
+            type: number
+        fg: 
+            type: number
+        fhx: 
+            type: number
+        fhxh: 
+            type: number
+        fhn: 
+            type: number
+        fhnh: 
+            type: number
+        fxx: 
+            type: number
+        fxxh: 
+            type: number
+        tg: 
+            type: number
+        tn: 
+            type: number
+        tnh: 
+            type: number
+        tx: 
+            type: number
+        txh: 
+            type: number
+        t10n: 
+            type: number
+        t10nh: 
+            type: number
+        sq: 
+            type: number
+        sp: 
+            type: number
+        q: 
+            type: number
+        dr: 
+            type: number
+        rh: 
+            type: number
+        rhx: 
+            type: number
+        rhxh: 
+            type: number
+        pg: 
+            type: number
+        px: 
+            type: number
+        pxh: 
+            type: number
+        pn: 
+            type: number
+        pnh: 
+            type: number
+        vvn: 
+            type: number
+        vvnh: 
+            type: number
+        vvx: 
+            type: number
+        vvxh: 
+            type: number
+        ng: 
+            type: number
+        ug: 
+            type: number
+        ux:
+            type: number
+        uxh:
+            type: number
+        un:
+            type: number
+        unh:
+            type: number
+        ev24:
+            type: number
+    Station:
+        required:
+        - stn
+        - lon
+        - lat
+        - alt
+        - name
+        properties:
+        stn:
+            type: number
+            example: 303
+        lon:
+            type: number
+            example: 123
+        lat:
+            type: number
+            example: 123
+        alt:
+            type: number
+            example: 123
+        name:
+            type: string
+            example: Heemskerk
+        amountofmeasurements:
+            type: number
+            example: 0
+    User:
+        required:
+        - email
+        - password
+        properties:
+        email:
+            type: string
+            example: test@test.com
+        password:
+            type: string
+            example: password
+    # Added by API Auto Mocking Plugin
+    host: measuring.dev
+    schemes:
+    - https
