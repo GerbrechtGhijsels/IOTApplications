@@ -41,7 +41,7 @@ data:
           - application/json
           parameters:
             in: query
-            name: searchString
+            name: id
             description: return overview of measurements
             required: false
             type: string
@@ -62,11 +62,11 @@ data:
           produces:
           - application/json
           parameters:
-            in: query
+          - in: query
             name: searchString
-            description: return overview of measurements
-            required: false
-            type: string
+            description: all stations
+            schema:
+              $ref: '#/definitions/Station'
           responses:
             200:
               description: search results matching criteria
@@ -124,11 +124,16 @@ data:
           produces:
           - application/json
           parameters:
+          - name: email
             in: body
-            name: User
-            description: Login in user
-            schema:
-              $ref: '#/definitions/User'
+            description: The email for login
+            required: true
+            type: string
+          - name: password
+            in: body
+            description: The password for login in clear text
+            required: true
+            type: string
           responses:
             201:
               description: item created
@@ -162,11 +167,16 @@ data:
           produces:
           - application/json
           parameters:
+          - name: email
             in: body
-            name: User
-            description: Login in user
-            schema:
-              $ref: '#/definitions/User'
+            description: The email for login
+            required: true
+            type: string
+          - name: password
+            in: body
+            description: The password for login in clear text
+            required: true
+            type: string
           responses:
             201:
               description: item created
@@ -204,11 +214,11 @@ data:
           produces:
           - application/json
           parameters:
-            in: query
-            name: id
-            description: return overview of statins
-            required: false
-            type: string
+          - in: query
+            name: body
+            description: all stations
+            schema:
+              $ref: '#/definitions/Station'
           responses:
             200:
               description: search results matching criteria

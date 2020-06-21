@@ -6,7 +6,7 @@ import { clientCode, RequiredView} from '../viewer/creator'
 
 const router = express.Router();
 
-router.get('/api/measurements/all/:type', async (req: Request, res: Response) => {
+router.get('/api/measurements/all/:type/', async (req: Request, res: Response) => {
   var limit = 100;
   const measurements = await Measurement.find({}).sort([['yyyymmdd', -1]]).limit(limit);
 
