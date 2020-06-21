@@ -25,17 +25,15 @@ spec:
         - name: API_URLS
           value: >-
             [
-            {url:'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/petstore.yaml',name:'Pet Store Example'},
-            {url:'https://raw.githubusercontent.com/OAI/OpenAPI-Specification/master/examples/v3.0/uspto.yaml',name:'USPTO'},
-            {url:'/swagger-ui/file-example/local.example.yml',name:'Local Example'}
+            {url:'/swagger-ui/file-swagger/local.swagger.yml',name:'Local swagger'}
             ]
         volumeMounts:
-        - name: local-example
-          mountPath: /usr/share/nginx/html/file-example
+        - name: local-swagger
+          mountPath: /usr/share/nginx/html/file-swagger
       volumes:
-        - name: local-example
+        - name: local-swagger
           configMap:
-            name: local-example
+            name: local-swagger
             items:
               - key: swagger
-                path: local.example.yml
+                path: local.swagger.yml
