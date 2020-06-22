@@ -1,0 +1,185 @@
+{
+	"info": {
+		"_postman_id": "ac61a209-a204-4563-b46c-e8c2e918d672",
+		"name": "Weather",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ttewf",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://measuring.dev/api/users/currentuser",
+					"protocol": "https",
+					"host": [
+						"measuring",
+						"dev"
+					],
+					"path": [
+						"api",
+						"users",
+						"currentuser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"email\": \"test@test.com\",\n\"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://measuring.dev/api/users/signup",
+					"protocol": "https",
+					"host": [
+						"measuring",
+						"dev"
+					],
+					"path": [
+						"api",
+						"users",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"test@test.com\",\n\t\"password\": \"test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://measuring.dev/api/users/signin",
+					"protocol": "https",
+					"host": [
+						"measuring",
+						"dev"
+					],
+					"path": [
+						"api",
+						"users",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "signout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://measuring.dev/api/users/signout",
+					"protocol": "https",
+					"host": [
+						"measuring",
+						"dev"
+					],
+					"path": [
+						"api",
+						"users",
+						"signout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "stations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://measuring.dev/api/stations?alt=0&limit=20",
+					"protocol": "https",
+					"host": [
+						"measuring",
+						"dev"
+					],
+					"path": [
+						"api",
+						"stations"
+					],
+					"query": [
+						{
+							"key": "alt",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new station",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "measurements",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
