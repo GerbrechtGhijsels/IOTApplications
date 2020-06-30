@@ -6,8 +6,10 @@ import { Station } from '../models/station';
 const router = express.Router();
 
 
-router.get('/api/stations/single/:id', async (req: Request, res: Response) => {
-  const station = await Station.findById(req.params.id);
+router.get('/api/stations/:stn', async (req: Request, res: Response) => {
+  const station = await Station.findOne({
+    stn: Number(req.params.stn)
+  });
   if (!station) {
     throw new NotFoundError();
   }

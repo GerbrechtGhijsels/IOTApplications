@@ -26,7 +26,6 @@ router.post(
       lat,
       alt,
       name,
-      amountofmeasurements,
      } = req.body;
 
     const station = Station.build({
@@ -35,7 +34,6 @@ router.post(
       lat,
       alt,
       name,
-      amountofmeasurements,
     });
     await station.save();
 
@@ -46,7 +44,7 @@ router.post(
       lat: station.lat,
       alt: station.alt,
       name: station.name,
-      amountofmeasurements: station.amountofmeasurements,
+      amountofmeasurements: 0,
     });
 
     res.status(201).send(station);

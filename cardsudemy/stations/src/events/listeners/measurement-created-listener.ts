@@ -13,7 +13,7 @@ export class MeasurementCreatedListener extends Listener<MeasurementCreatedEvent
     const station = await Station.findOne([['stn', data.stn]]);
 
     if (!station) {
-      throw new Error('Ticket not found');
+      throw new Error('Station not found');
     }
     station.amountofmeasurements += 1;
     station.set({ amountofmeasurements: station.amountofmeasurements });

@@ -3,18 +3,10 @@ import { Station } from '../models/station';
 
 const router = express.Router();
 
-router.get('/api/stations/all/', async (req: Request, res: Response) => {
-  console.dir(req.query);
-
-
-  var query = {};
+router.get('/api/stations', async (req: Request, res: Response) => {
   var limit = 100;
 
-
-
-  console.dir(query);
-
-  const station = await Station.find(query).limit(limit);
+  const station = await Station.find(req.query).limit(limit);
 
 
   res.send(station);

@@ -1,58 +1,58 @@
 export interface MeasurementsRequired {
-    id: number;
-    stn: number;
-    yyyymmdd: number;
+    measurementid: string;
+    stn: string;
+    yyyymmdd: string;
 }
 
 
 export interface MeasurementFullView extends MeasurementsRequired{
-    ddvec: number;
-    fhvec: number;
-    fg: number;
-    fhx: number;
-    fhxh: number;
-    fhn: number;
-    fhnh: number;
-    fxx: number;
-    fxxh: number;
-    tg: number;
-    tn: number;
-    tnh: number;
-    tx: number;
-    txh: number;
-    t10n: number;
-    t10nh: number;
-    sq: number;
-    sp: number;
-    q: number;
-    dr: number;
-    rh: number;
-    rhx: number;
-    rhxh: number;
-    pg: number;
-    px: number;
-    pxh: number;
-    pn: number;
-    pnh: number;
-    vvn: number;
-    vvnh: number;
-    vvx: number;
-    vvxh: number;
-    ng: number;
-    ug: number;
-    ux: number;
-    uxh: number;
-    un: number;
-    unh: number;
-    ev24: number;
+    ddvec: string;
+    fhvec: string;
+    fg: string;
+    fhx: string;
+    fhxh: string;
+    fhn: string;
+    fhnh: string;
+    fxx: string;
+    fxxh: string;
+    tg: string;
+    tn: string;
+    tnh: string;
+    tx: string;
+    txh: string;
+    t10n: string;
+    t10nh: string;
+    sq: string;
+    sp: string;
+    q: string;
+    dr: string;
+    rh: string;
+    rhx: string;
+    rhxh: string;
+    pg: string;
+    px: string;
+    pxh: string;
+    pn: string;
+    pnh: string;
+    vvn: string;
+    vvnh: string;
+    vvx: string;
+    vvxh: string;
+    ng: string;
+    ug: string;
+    ux: string;
+    uxh: string;
+    un: string;
+    unh: string;
+    ev24: string;
 }
 
 export interface MeasurementDetailView extends MeasurementsRequired{
-    ddvec: number;
-    fhvec: number;
-    tg: number;
-    rh: number;
-    pg: number;
-    ng: number;
-    ug: number;
+    ddvec: string;
+    fhvec: string;
+    tg: string;
+    rh: string;
+    pg: string;
+    ng: string;
+    ug: string;
 }

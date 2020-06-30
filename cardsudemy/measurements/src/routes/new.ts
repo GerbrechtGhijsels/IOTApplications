@@ -15,7 +15,7 @@ router.post(
   '/api/measurements',
   requireAuth,
   [
-    body('id').not().isEmpty().withMessage('id is required'),
+    body('measurementid').not().isEmpty().withMessage('id is required'),
     body('stn')
       .isFloat({ gt: 0 })
       .withMessage('Price must be greater than 0'),
@@ -23,7 +23,7 @@ router.post(
   validateRequest,
   async (req: Request, res: Response) => {
     const { 
-      id,
+      measurementid,
       stn,
       yyyymmdd,
       ddvec,
@@ -68,7 +68,7 @@ router.post(
      } = req.body;
 
     const measurement = Measurement.build({
-      id,
+      measurementid,
       stn,
       yyyymmdd,
       ddvec,

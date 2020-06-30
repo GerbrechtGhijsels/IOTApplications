@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "ttewf",
+			"name": "User - Current User",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -27,7 +27,7 @@
 			"response": []
 		},
 		{
-			"name": "signup",
+			"name": "User - SignUp",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -57,7 +57,7 @@
 			"response": []
 		},
 		{
-			"name": "login",
+			"name": "User - Login",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -93,7 +93,7 @@
 			"response": []
 		},
 		{
-			"name": "signout",
+			"name": "User - SignOut",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -129,12 +129,33 @@
 			"response": []
 		},
 		{
-			"name": "stations",
+			"name": "Stations Get Station",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://measuring.dev/api/stations?alt=0&limit=20",
+					"raw": "https://measuring.dev/api/stations/215",
+					"protocol": "https",
+					"host": [
+						"measuring",
+						"dev"
+					],
+					"path": [
+						"api",
+						"stations",
+						"215"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stations Get Stations",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://measuring.dev/api/stations?alt=0",
 					"protocol": "https",
 					"host": [
 						"measuring",
@@ -151,7 +172,8 @@
 						},
 						{
 							"key": "limit",
-							"value": "20"
+							"value": "20",
+							"disabled": true
 						}
 					]
 				}
@@ -159,23 +181,178 @@
 			"response": []
 		},
 		{
-			"name": "new station",
+			"name": "Stations Post Station",
 			"request": {
-				"method": "GET",
-				"header": [],
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n\t\"stn\": 666,\n    \"lon\": 223.3,\n\t\"lat\": 223.3,\n\t\"alt\": 223.3,\n\t\"name\": \"test\"\n} ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": ""
+					"raw": "https://measuring.dev/api/stations",
+					"protocol": "https",
+					"host": [
+						"measuring",
+						"dev"
+					],
+					"path": [
+						"api",
+						"stations"
+					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "measurements",
+			"name": "Measurements Post Measurement",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"stn\": \"275\",\n    \"yyyymmdd\": \"20200108\",\n    \"ddvec\": \"\",\n    \"fhvec\": \"\",\n    \"fg\": \"48\",\n    \"fhx\": \"\",\n    \"fhxh\": \"\",\n    \"fnh\": \"\",\n    \"fhnh\": \"\",\n    \"fxx\": \"\",\n    \"fxxh\": \"\",\n    \"tg\": \"98\",\n    \"tn\": \"70\",\n    \"tnh\": \"1\",\n    \"tx\": \"114\",\n    \"txh\": \"13\",\n    \"t10n\": \"69\",\n    \"t10nh\": \"6\",\n    \"sq\": \"\",\n    \"sp\": \"\",\n    \"q\": \"\",\n    \"dr\": \"\",\n    \"rh\": \"\",\n    \"rhx\": \"\",\n    \"rhxh\": \"\",\n    \"pg\": \"10215\",\n    \"px\": \"\",\n    \"pxh\": \"\",\n    \"pn\": \"\",\n    \"pnh\": \"\",\n    \"vvn\": \"\",\n    \"vvnh\": \"\",\n    \"vvx\": \"\",\n    \"vvxh\": \"\",\n    \"ng\": \"8\",\n    \"ug\": \"97\",\n    \"ux\": \"\",\n    \"uxh\": \"\",\n    \"un\": \"\",\n    \"unh\": \"\",\n    \"ev24\": \"\",\n    \"measurementid\": \"23\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://measuring.dev/api/measurements",
+					"protocol": "https",
+					"host": [
+						"measuring",
+						"dev"
+					],
+					"path": [
+						"api",
+						"measurements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Measurements Get Latest",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "https://measuring.dev/api/measurements/overview/latest/Detail/",
+					"protocol": "https",
+					"host": [
+						"measuring",
+						"dev"
+					],
+					"path": [
+						"api",
+						"measurements",
+						"overview",
+						"latest",
+						"Detail",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Measurements Get Measurements",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://measuring.dev/api/measurements/overview/Full",
+					"protocol": "https",
+					"host": [
+						"measuring",
+						"dev"
+					],
+					"path": [
+						"api",
+						"measurements",
+						"overview",
+						"Full"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Measurements Get Measurement",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://measuring.dev/api/measurements/312177",
+					"protocol": "https",
+					"host": [
+						"measuring",
+						"dev"
+					],
+					"path": [
+						"api",
+						"measurements",
+						"312177"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Measurements Get Measurements Query",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://measuring.dev/api/measurements/all/query?stn=275",
+					"protocol": "https",
+					"host": [
+						"measuring",
+						"dev"
+					],
+					"path": [
+						"api",
+						"measurements",
+						"all",
+						"query"
+					],
+					"query": [
+						{
+							"key": "stn",
+							"value": "275"
+						}
+					]
 				}
 			},
 			"response": []

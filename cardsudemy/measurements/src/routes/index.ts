@@ -6,16 +6,24 @@ import { clientCode, RequiredView} from '../viewer/creator'
 
 const router = express.Router();
 
-router.get('/api/measurements/all/:type/', async (req: Request, res: Response) => {
-  var limit = 100;
-  const measurements = await Measurement.find({}).sort([['yyyymmdd', -1]]).limit(limit);
+router.get('/api/measurements/all/query', async (req: Request, res: Response) => {
+  console.dir(req.query)
+  var measurements = await Measurement.find(req.query).limit(100);
 
-  const collection = new MeasurementsCollection(measurements);
-  const iterator = collection.getIterator();
+ 
+  res.send(measurements);
+});
+
+router.get('/api/measurements/overview/:type', async (req: Request, res: Response) => {
+  var limit = 100;
+  var measurements = await Measurement.find({}).sort([['yyyymmdd', -1]]).limit(limit);
+
+  var collection = new MeasurementsCollection(measurements);
+  var iterator = collection.getIterator();
 
   var list = [];
   while (iterator.valid()) {
-    const measurement =  clientCode(req.params.type,iterator.next())
+    var measurement =  clientCode(req.params.type,iterator.next())
     list.push(measurement);
   }
 
@@ -23,18 +31,20 @@ router.get('/api/measurements/all/:type/', async (req: Request, res: Response) =
   res.send(list);
 });
 
-router.get('/api/measurements/latest/', async (req: Request, res: Response) => {
-  const measurement = await Measurement.find({}).sort([['yyyymmdd', -1]]).limit(100);
+router.get('/api/measurements/overview/latest/:type', async (req: Request, res: Response) => {
+  var measurements = await Measurement.find({}).sort([['yyyymmdd', -1]]).limit(100);
 
-  const collection = new MeasurementsCollection(measurement);
-  const iterator = collection.getIterator();
+  var collection = new MeasurementsCollection(measurements);
+  var iterator = collection.getIterator();
 
-
+  var list = [];
   while (iterator.valid()) {
-    console.log(iterator.next());
+    var measurement =  clientCode(req.params.type,iterator.next())
+    list.push(measurement);
   }
 
-  res.send(measurement);
+  res.send(list);
 });
+
 
 export { router as indexMeasurementRouter };

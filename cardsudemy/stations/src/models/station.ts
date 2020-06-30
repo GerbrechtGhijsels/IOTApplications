@@ -15,7 +15,6 @@ interface StationAttrs {
   lat: number;
   alt: number;
   name: string;
-  amountofmeasurements: number;
 }
 
 interface StationDoc extends mongoose.Document {

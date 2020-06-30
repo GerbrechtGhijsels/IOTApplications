@@ -10,10 +10,10 @@ data:
       version: 1.0.0
       title: Simple weather API
     paths:
-      /api/measurements/all:
+      /api/measurements/all/query:
         get:
           summary: measurements
-          operationId: getAllMeasurements
+          operationId: getAllMeasurementswithQuery
           description: test
           produces:
           - application/json
@@ -32,10 +32,32 @@ data:
                 $ref: '#/definitions/Measurement'
             400:
               description: bad input parameter
-      /api/measurements/single/{id}:
+      /api/measurements/overview/{type}:
         get:
           summary: measurements
-          operationId: searchMeasurements
+          operationId: getAllMeasurementswithtype
+          description: test
+          produces:
+          - application/json
+          parameters:
+            in: query
+            name: type
+            description: view type
+            required: false
+            type: string
+          responses:
+            200:
+              description: search results matching criteria
+              schema:
+                type: array
+                items:
+                $ref: '#/definitions/Measurement'
+            400:
+              description: bad input parameter
+      /api/measurements/{id}:
+        get:
+          summary: measurements
+          operationId: getMeasurement
           description: test
           produces:
           - application/json
@@ -54,19 +76,19 @@ data:
                 $ref: '#/definitions/Measurement'
             400:
               description: bad input parameter
-      /api/measurements/latest:
+      /api/measurements/overview/latest/{type}:
         get:
           summary: measurements
-          operationId: returnlatestmeasurements
+          operationId: returnoverviewlatestmeasurements
           description: test
           produces:
           - application/json
           parameters:
-          - in: query
-            name: searchString
-            description: all stations
-            schema:
-              $ref: '#/definitions/Station'
+            in: query
+            name: type
+            description: view type
+            required: false
+            type: string
           responses:
             200:
               description: search results matching criteria
@@ -76,7 +98,7 @@ data:
               $ref: '#/definitions/Measurement'
             400:
               description: bad input parameter
-      /api/measurement:
+      /api/measurements:
         post:
           summary: adds an measurement
           operationId: addMeasurement
@@ -206,7 +228,7 @@ data:
               $ref: '#/definitions/Station'
             400:
               description: bad input parameter
-      /api/stations/all:
+      /api/stations:
         get:
           summary: station
           operationId: searchstations
@@ -228,7 +250,6 @@ data:
               $ref: '#/definitions/Station'
             400:
               description: bad input parameter
-      /api/stations:
         post:
           summary: adds an station
           operationId: addStation
@@ -254,94 +275,94 @@ data:
       Measurement:
         type: object
         required:
-          id
+          measurementid
           stn
           yyyymmdd
         properties:
-          id: 
-            type: number
+          measurementid: 
+            type: string
           stn: 
-            type: number
+            type: string
           yyyymmdd: 
-            type: number
+            type: string
           ddvec: 
-            type: number
+            type: string
           fhvec: 
-            type: number
+            type: string
           fg: 
-            type: number
+            type: string
           fhx: 
-            type: number
+            type: string
           fhxh: 
-            type: number
+            type: string
           fhn: 
-            type: number
+            type: string
           fhnh: 
-            type: number
+            type: string
           fxx: 
-            type: number
+            type: string
           fxxh: 
-            type: number
+            type: string
           tg: 
-            type: number
+            type: string
           tn: 
-            type: number
+            type: string
           tnh: 
-            type: number
+            type: string
           tx: 
-            type: number
+            type: string
           txh: 
-            type: number
+            type: string
           t10n: 
-            type: number
+            type: string
           t10nh: 
-            type: number
+            type: string
           sq: 
-            type: number
+            type: string
           sp: 
-            type: number
+            type: string
           q: 
-            type: number
+            type: string
           dr: 
-            type: number
+            type: string
           rh: 
-            type: number
+            type: string
           rhx: 
-            type: number
+            type: string
           rhxh: 
-            type: number
+            type: string
           pg: 
-            type: number
+            type: string
           px: 
-            type: number
+            type: string
           pxh: 
-            type: number
+            type: string
           pn: 
-            type: number
+            type: string
           pnh: 
-            type: number
+            type: string
           vvn: 
-            type: number
+            type: string
           vvnh: 
-            type: number
+            type: string
           vvx: 
-            type: number
+            type: string
           vvxh: 
-            type: number
+            type: string
           ng: 
-            type: number
+            type: string
           ug: 
-            type: number
+            type: string
           ux:
-            type: number
+            type: string
           uxh:
-            type: number
+            type: string
           un:
-            type: number
+            type: string
           unh:
-            type: number
+            type: string
           ev24:
-            type: number
+            type: string
       Station:
         type: object
         required:
