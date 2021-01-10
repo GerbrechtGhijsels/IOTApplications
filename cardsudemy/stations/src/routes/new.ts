@@ -20,7 +20,7 @@ router.post(
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-    const { 
+    const {
       stn,
       lon,
       lat,
@@ -38,7 +38,6 @@ router.post(
     await station.save();
 
     await new StationCreatedPublisher(natsWrapper.client).publish({
-      id: station.id,
       stn: station.stn,
       lon: station.lon,
       lat: station.lat,

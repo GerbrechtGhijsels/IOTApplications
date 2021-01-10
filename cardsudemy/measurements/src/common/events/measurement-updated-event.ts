@@ -3,7 +3,6 @@ import { Subjects } from './subjects';
 export interface MeasurementUpdatedEvent {
   subject: Subjects.MeasurementUpdated;
   data: {
-    measurementid: string;
     stn: string;
     yyyymmdd: string;
     ddvec: string;

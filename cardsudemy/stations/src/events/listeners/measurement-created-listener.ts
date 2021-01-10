@@ -21,7 +21,6 @@ export class MeasurementCreatedListener extends Listener<MeasurementCreatedEvent
     // Save the ticket
     await station.save();
     await new StationUpdatedPublisher(this.client).publish({
-      id: station.id,
       stn: station.stn,
       lon: station.lon,
       lat: station.lat,

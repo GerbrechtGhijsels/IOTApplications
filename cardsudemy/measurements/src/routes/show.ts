@@ -5,7 +5,7 @@ import { Measurement } from '../models/measurement';
 const router = express.Router();
 
 router.get('/api/measurements/:id', async (req: Request, res: Response) => {
-  const measurement = await Measurement.findOne({measurementid: req.params.id});
+  const measurement = await Measurement.findOne({_id: req.params.id});
 
   if (!measurement) {
     throw new NotFoundError();

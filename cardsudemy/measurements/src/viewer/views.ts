@@ -1,5 +1,4 @@
 export interface MeasurementsRequired {
-    measurementid: string;
     stn: string;
     yyyymmdd: string;
 }

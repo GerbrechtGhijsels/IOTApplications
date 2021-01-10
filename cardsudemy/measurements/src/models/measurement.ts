@@ -44,7 +44,6 @@ import mongoose from 'mongoose';
 */
 
 interface MeasurementAttrs {
-  measurementid: string;
   stn: string;
   yyyymmdd: string;
   ddvec: string;
@@ -89,7 +88,6 @@ interface MeasurementAttrs {
 }
 
 export interface MeasurementDoc extends mongoose.Document {
-  measurementid: string;
   stn: string;
   yyyymmdd: string;
   ddvec: string;
@@ -139,10 +137,6 @@ interface MeasurementModel extends mongoose.Model<MeasurementDoc> {
 
 const measurementSchema = new mongoose.Schema(
   {
-    measurementid: {
-      type: String,
-      required: true,
-    },
     stn: {
       type: String,
       required: true,

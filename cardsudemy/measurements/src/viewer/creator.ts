@@ -34,13 +34,11 @@ class ViewCreatorFull extends Creator {
 
 
 export class RequiredView implements MeasurementsRequired {
-    measurementid: string;
     stn: string;
     yyyymmdd: string;
     
     constructor(model: MeasurementDoc)
     {
-        this.measurementid = model.measurementid;
         this.stn = model.stn;
         this.yyyymmdd = model.yyyymmdd;
     }
