@@ -1,9 +1,9 @@
 import time
 import board
 import adafruit_dht
-#from gpiozero import InputDevice
-import os
 import RPi.GPIO as GPIO
+import requests
+from datetime import datetime
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(18, GPIO.IN)
@@ -12,31 +12,59 @@ rain = GPIO.input(18)
 # Initial the dht device, with data pin connected to:
 dhtDevice = adafruit_dht.DHT11(board.D4)
 
+token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmZmI4ODhiZjFmMTcwMDAxOTU0ZDQyOSIsImVtYWlsIjoidGVzdEB0ZXN0LmNvbSIsImlhdCI6MTYxMDMyMDAxMX0.rJuVfeSd5RST1iuvjTI5g3IKVHnBCGubF8n9tdG4Fr8"
+host = '192.168.1.161'
+host = 'measuring.dev'
 
-# you can pass DHT22 use_pulseio=False if you wouldn't like to use pulseio.
-# This may be necessary on a Linux single board computer like the Raspberry Pi,
-# but it will not work in CircuitPython.
-#dhtDevice = adafruit_dht.DHT11(board.D4, use_pulseio=False)
-#no_rain = InputDevice(18)
+
+def post_measurement(stn, current_datetime, temp, humidity, rain):
+    payload = {}
+    payload['stn'] = stn
+    payload['yyyymmdd'] = current_datetime
+    payload['tg'] = temp
+    payload['ug'] = humidity
+    payload['rh'] = rain
+
+    headers = {'authorization': token}
+    r = requests.post('https://measuring.dev/api/measurements/token', json=payload, headers=headers, verify=False)
+    print(r.text)
+
+
+def print_measurement(stn, current_datetime, temp, humidity, rain):
+    print('**********************************')
+    print('Station: ' + stn)
+    print('Date and time: ' + current_datetime)
+    print(
+        "Temp: {:.1f} C    Humidity: {}% ".format(
+            temp, humidity
+        )
+    )
+    if rain == 0:
+        print("Rain: Yes")
+
+    else:
+        print("Rain: No")
+    print('**********************************')
 
 
 while True:
     try:
+        stn = '666'
+        now = datetime.now()
+        current_datetime = now.strftime("%Y/%m/%d %H:%M:%S")
+        temp = ''
+        humidity = ''
+        rain = ''
+
         # Print the values to the serial port
         temperature_c = dhtDevice.temperature
         temperature_f = temperature_c * (9 / 5) + 32
         humidity = dhtDevice.humidity
-        print(
-            "Temp: {:.1f} F / {:.1f} C    Humidity: {}% ".format(
-                temperature_f, temperature_c, humidity
-            )
-        )
 
-        if (rain == 0):
-            print("It's raining!")
+        temp = temperature_c
 
-        else:
-            print("It's not raining!")
+        post_measurement(stn, current_datetime, temp, humidity, rain)
+        print_measurement(stn, current_datetime, temp, humidity, rain)
 
     except RuntimeError as error:
         # Errors happen fairly often, DHT's are hard to read, just keep going
