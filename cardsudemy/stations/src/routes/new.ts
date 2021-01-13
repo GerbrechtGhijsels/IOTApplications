@@ -45,6 +45,7 @@ router.post(
       name: station.name,
       amountofmeasurements: 0,
     });
+    console.log('Station creation event published');
 
     res.status(201).send(station);
   }

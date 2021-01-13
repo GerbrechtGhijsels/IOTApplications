@@ -32,3 +32,11 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: gg/requester
+      context: requester
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .

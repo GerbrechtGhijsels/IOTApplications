@@ -19,4 +19,3 @@ export * from './events/measurement-created-event';
 export * from './events/measurement-updated-event';
 export * from './events/requester-created-event';
 
-export * from './query/iterator';

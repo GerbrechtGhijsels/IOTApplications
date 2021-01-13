@@ -10,7 +10,7 @@ export abstract class Listener<T extends Event> {
   abstract subject: T['subject'];
   abstract queueGroupName: string;
   abstract onMessage(data: T['data'], msg: Message): void;
-  protected client: Stan;
+  private client: Stan;
   protected ackWait = 5 * 1000;
 
   constructor(client: Stan) {
@@ -19,18 +19,18 @@ export abstract class Listener<T extends Event> {
 
   subscriptionOptions() {
     return this.client
-        .subscriptionOptions()
-        .setDeliverAllAvailable()
-        .setManualAckMode(true)
-        .setAckWait(this.ackWait)
-        .setDurableName(this.queueGroupName);
+      .subscriptionOptions()
+      .setDeliverAllAvailable()
+      .setManualAckMode(true)
+      .setAckWait(this.ackWait)
+      .setDurableName(this.queueGroupName);
   }
 
   listen() {
     const subscription = this.client.subscribe(
-        this.subject,
-        this.queueGroupName,
-        this.subscriptionOptions()
+      this.subject,
+      this.queueGroupName,
+      this.subscriptionOptions()
     );
 
     subscription.on('message', (msg: Message) => {
@@ -44,7 +44,7 @@ export abstract class Listener<T extends Event> {
   parseMessage(msg: Message) {
     const data = msg.getData();
     return typeof data === 'string'
-        ? JSON.parse(data)
-        : JSON.parse(data.toString('utf8'));
+      ? JSON.parse(data)
+      : JSON.parse(data.toString('utf8'));
   }
 }

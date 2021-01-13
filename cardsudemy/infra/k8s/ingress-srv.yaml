@@ -22,6 +22,10 @@ spec:
             backend:
               serviceName: stations-srv
               servicePort: 3000
+          - path: /api/requester/?(.*)
+            backend:
+              serviceName: requester-srv
+              servicePort: 3000
           - path: /swagger-ui
             backend:
               serviceName: swagger-ui

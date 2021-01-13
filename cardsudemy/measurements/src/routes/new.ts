@@ -5,6 +5,8 @@ import { requireAuth  } from '../common';
 import { requireToken  } from '../common';
 import { validateRequest } from '../common';
 import { Measurement } from '../models/measurement';
+import { natsWrapper } from '../nats-wrapper';
+import {MeasurementCreatedPublisher} from "../events/publishers/measurement-created-publisher";
 
 const router = express.Router();
 
@@ -111,15 +113,8 @@ router.post(
     });
     await measurement.save();
 
-
-
-    const event = {
-      type: 'measurement:created',
-      data: measurement,
-    };
-    stan.publish('measurement:created', JSON.stringify(event), () => {
-      console.log('Measurement creation event published');
-    });
+    await new MeasurementCreatedPublisher(natsWrapper.client).publish(measurement);
+    console.log('Measurement creation event published');
 
     res.status(201).send(measurement);
   }
@@ -224,15 +219,8 @@ router.post(
       });
       await measurement.save();
 
-
-
-      const event = {
-        type: 'measurement:created',
-        data: measurement,
-      };
-      stan.publish('measurement:created', JSON.stringify(event), () => {
-        console.log('Measurement creation event published');
-      });
+      await new MeasurementCreatedPublisher(natsWrapper.client).publish(measurement);
+      console.log('Measurement creation event published');
 
       res.status(201).send(measurement);
     }

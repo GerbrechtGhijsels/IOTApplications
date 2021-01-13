@@ -5,6 +5,7 @@ kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 docker build -t gg/measurements ./measurements
 docker build -t gg/stations ./stations
 docker build -t gg/auth ./auth
+docker build -t gg/requester ./requester
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml
 
