@@ -1,1 +1,4 @@
-<p>error works!</p>
+<div class="error-wrapper" [ngClass]="{'error-wrapper-active': message}">
+    <span class="error-message">{{message}}</span>
+    <button class="error-btn">{{action}}</button>
+</div>
