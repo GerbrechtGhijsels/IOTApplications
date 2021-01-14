@@ -2,6 +2,7 @@ JWK_KEY = ASDF
 
 kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 
+docker build -t gg/client ./client
 docker build -t gg/measurements ./measurements
 docker build -t gg/stations ./stations
 docker build -t gg/auth ./auth
