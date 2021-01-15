@@ -1,8 +1,8 @@
-FROM node:alpine
+FROM node:alpine AS builder
+COPY . ./client
+WORKDIR /client
+RUN npm i
+RUN $(npm bin)/ng build --prod
 
-WORKDIR /app
-COPY package.json .
-RUN npm install --only=prod
-COPY . .
-
-CMD ["npm", "start"]
+FROM nginx:alpine
+COPY --from=builder /client/dist/client/ /usr/share/nginx/html

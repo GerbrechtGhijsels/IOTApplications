@@ -402,5 +402,5 @@ data:
           password:
             type: string
             example: password
-    host: measuring.dev
+    host: measuring.local
     schemes: https

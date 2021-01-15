@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   rules:
-    - host: measuring.dev
+    - host: measuring.local
       http:
         paths:
           - path: /api/users/?(.*)
@@ -30,3 +30,7 @@ spec:
             backend:
               serviceName: swagger-ui
               servicePort: 80
+          - path: /?(.*)
+            backend:
+              serviceName: client-srv
+              servicePort: 3000

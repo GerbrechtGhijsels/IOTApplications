@@ -2,6 +2,7 @@ JWK_KEY = ASDF
 
 kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 
+
 docker build -t gg/client ./client
 docker build -t gg/measurements ./measurements
 docker build -t gg/stations ./stations
@@ -64,6 +65,9 @@ Skaffold build
 
 skaffold.dev
 skaffold dev --no-prune
+skaffold run
+skaffold build
+skaffold dev  -w client
 
 -----------------------------------------------------------
 docker image build
