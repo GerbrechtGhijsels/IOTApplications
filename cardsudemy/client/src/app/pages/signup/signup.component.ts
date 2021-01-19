@@ -11,7 +11,7 @@ import {first} from 'rxjs/operators';
 export class SignupComponent implements OnInit {
   errorMessage;
 
-  constructor(public fb: AuthService, public router: Router) {
+  constructor(public auth: AuthService, public router: Router) {
   }
 
   ngOnInit() {
@@ -19,6 +19,13 @@ export class SignupComponent implements OnInit {
 
   signup(e) {
 
+    try {
+      console.log('signUp');
+       this.auth.signup(e.target.email.value, e.target.password.value);
+    } catch (err) {
+      this.errorMessage = err;
+      setTimeout(() => this.errorMessage = '', 2000);
+    }
   }
 
 }

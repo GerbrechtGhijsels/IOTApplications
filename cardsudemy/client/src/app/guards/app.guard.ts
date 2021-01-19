@@ -8,14 +8,21 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AppGuard implements CanActivate {
-  constructor(public fb: AuthService, public router: Router) {
+  constructor(public auth: AuthService, public router: Router) {
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | boolean {
-    return true;
-
+    console.log('app');
+    if (this.auth.isAuth()) {
+      console.log('app true');
+      return true;
+    } else {
+      console.log('app false');
+      this.router.navigate(['/login']);
+      return false;
+    }
   }
 
 }

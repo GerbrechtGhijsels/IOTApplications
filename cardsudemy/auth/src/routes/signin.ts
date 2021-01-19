@@ -55,4 +55,6 @@ router.post(
   }
 );
 
+
+//router.options('*', cors(options));
 export { router as signinRouter };

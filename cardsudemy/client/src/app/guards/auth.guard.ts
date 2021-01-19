@@ -8,13 +8,19 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(public fb: AuthService, public router: Router) {
+  constructor(public auth: AuthService, public router: Router) {
   }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | boolean {
-    return true;
+    console.log('auth');
+    if (!this.auth.isAuth()) {
+      return true;
+    } else {
+      this.router.navigate(['/']);
+      return false;
+    }
   }
 
 }

@@ -10,14 +10,24 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   errorMessage = '';
-  constructor(public fb: AuthService, public router: Router) {
+
+  public loginInvalid: boolean;
+
+  constructor(public auth: AuthService, public router: Router) {
   }
 
   ngOnInit() {
   }
 
-  login(e) {
+  async login(e) {
 
+    try {
+      await this.auth.signin(e.target.email.value, e.target.password.value);
+    } catch (err) {
+      this.loginInvalid = true;
+      this.errorMessage = err;
+      setTimeout(() => this.errorMessage = '', 2000);
+    }
   }
 
 }

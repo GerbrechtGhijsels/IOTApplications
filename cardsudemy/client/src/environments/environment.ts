@@ -4,16 +4,18 @@
 
 export const environment = {
   production: false,
-  appID: '',
   config: {
-    apiKey: '',
+    apiKey: '114b5b2b11d4dcfcc5898d4bd4cdb123',
+    apiToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmZmI4ODhiZjFmMTcwMDAxOTU0ZDQyOSIsImVtYWlsIjoidGVzdEB0ZXN0LmNvbSIsImlhdCI6MTYxMDMyMDAxMX0.rJuVfeSd5RST1iuvjTI5g3IKVHnBCGubF8n9tdG4Fr8',
     authDomain: '',
     databaseURL: '',
     projectId: '',
     storageBucket: '',
-    messagingSenderId: ''
+    messagingSenderId: '',
+    baseURL: 'https://measuring.gg'
   }
 };
+
 
 /*
  * In development mode, to ignore zone related error stack frames such as

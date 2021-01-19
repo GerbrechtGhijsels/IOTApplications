@@ -14,7 +14,7 @@ dhtDevice = adafruit_dht.DHT11(board.D4)
 
 token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmZmI4ODhiZjFmMTcwMDAxOTU0ZDQyOSIsImVtYWlsIjoidGVzdEB0ZXN0LmNvbSIsImlhdCI6MTYxMDMyMDAxMX0.rJuVfeSd5RST1iuvjTI5g3IKVHnBCGubF8n9tdG4Fr8"
 host = '192.168.1.161'
-host = 'measuring.dev'
+host = 'measuring.gg'
 
 
 def post_measurement(stn, current_datetime, temp, humidity, rain):
@@ -26,7 +26,7 @@ def post_measurement(stn, current_datetime, temp, humidity, rain):
     payload['rh'] = rain
 
     headers = {'authorization': token}
-    r = requests.post('https://measuring.dev/api/measurements/token', json=payload, headers=headers, verify=False)
+    r = requests.post('https://measuring.gg/api/measurements/token', json=payload, headers=headers, verify=False)
     print(r.text)
 
 
