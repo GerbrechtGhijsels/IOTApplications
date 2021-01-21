@@ -9,7 +9,7 @@ export class RequesterCreatedListener extends Listener<RequesterCreatedEvent> {
     queueGroupName = queueGroupName;
 
     async onMessage(data: RequesterCreatedEvent['data'], msg: Message) {
-        console.log('recieved request')
+        console.log('recieved request');
         const datetime = new Date().toISOString().
         replace(/T/, ' ').
         replace(/\..+/, '');

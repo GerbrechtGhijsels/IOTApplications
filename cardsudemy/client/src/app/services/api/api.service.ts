@@ -8,7 +8,7 @@ const baseUrl = environment.config.baseURL;
 @Injectable({
     providedIn: 'root'
 })
-export class ServerService {
+export class ApiService {
     private loggedIn = false;
     private token: string;
     public email: string;

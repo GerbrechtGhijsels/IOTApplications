@@ -46,6 +46,13 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
 
   }
 
+  @Input() set station (station: string) {
+    this.station = station;
+
+
+
+  }
+
   @Input() addMode;
   @Output() cityStored = new EventEmitter();
   citesWeather: Object;
@@ -58,11 +65,13 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
   errorMessage: string;
   cityName;
   cityAdded = false;
+  stationNumber;
+  stationAdded = false;
 
   constructor(public weather: WeatherService,
               public router: Router,
               public ui: UiService,
-              public fb: AuthService) {
+              public auth: AuthService) {
   }
 
   ngOnInit() {
@@ -75,15 +84,36 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
     this.sub1.unsubscribe();
   }
 
-  openDetails() {
+  openDetailsCity() {
     if (!this.addMode) {
       this.router.navigateByUrl('/details/' + this.cityName);
     }
   }
 
-  addCity() {
 
+  openDetailsStation() {
+    if (!this.addMode) {
+      this.router.navigateByUrl('/details/' + this.cityName);
+    }
   }
 
+  addStation() {
+    this.auth.addStation(this.stationNumber).subscribe(() => {
 
+      setTimeout(() => this.stationAdded = false, 2000);
+    });
+  }
+
+  addCity() {
+    this.auth.addCity(this.cityName).subscribe(() => {
+      this.cityName = null;
+      this.maxTemp = null;
+      this.minTemp = null;
+      this.state = null;
+      this.temp = null;
+      this.cityAdded = true;
+      this.cityStored.emit();
+      setTimeout(() => this.cityAdded = false, 2000);
+    });
+  }
 }

@@ -9,10 +9,10 @@ import {AuthService} from '../../services/auth/auth.service';
 export class HomeComponent implements OnInit {
   cities;
 
-  constructor(public fb: AuthService) {
+  constructor(public auth: AuthService) {
   }
 
   ngOnInit() {
-    this.cities = this.fb.getCities();
+    this.cities = this.auth.getCities();
   }
 }

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {first, switchMap} from 'rxjs/operators';
 import {environment} from "../../../environments/environment";
 import {HttpClient} from '@angular/common/http';
-import { ServerService } from './server.service';
+import { ApiService } from '../api/api.service';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
@@ -21,7 +21,7 @@ export class AuthService {
     return this.loggedIn.asObservable();
   }
 
-  constructor(private router: Router, private server: ServerService) {
+  constructor(private router: Router, private server: ApiService) {
     console.log('Auth Service');
     const userData = localStorage.getItem('user');
     if (userData) {
@@ -84,6 +84,12 @@ export class AuthService {
 
 
   logout() {
+    this.server.request('POST', '/api/users/signout', {
+
+    }).subscribe((response: any) => {
+
+    });
+
     this.server.setLoggedIn(false);
     delete this.token;
 
@@ -93,13 +99,28 @@ export class AuthService {
   }
 
   getCities() {
+    return this.server.request('GET', '/api/users/user/cities').subscribe((response: any) => {
 
+    });
+  }
+
+  getStations() {
+    return this.server.request('GET', '/api/users/user/stations').subscribe((response: any) => {
+
+    });
   }
 
   addCity(name: string) {
-
+    return this.server.request('POST', '/api/users/user/stations', {
+      city: name
+    });
   }
 
+  addStation(name: string) {
+    return this.server.request('POST', '/api/users/user/stations', {
+      station: name
+    });
+  }
 }
 
 

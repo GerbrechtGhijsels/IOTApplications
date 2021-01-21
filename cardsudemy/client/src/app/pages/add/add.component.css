@@ -153,6 +153,7 @@
   font-size: 1.85rem;
   letter-spacing: 0.1rem;
   word-break: break-all;
+  z-index: 1;
 }
 
 .fav-city-title {

@@ -6,7 +6,25 @@ import { BadRequestError } from '../common';
 
 import { User } from '../models/user';
 
+import cors from 'cors';
+
 const router = express.Router();
+
+const options: cors.CorsOptions = {
+  allowedHeaders: [
+    'Origin',
+    'X-Requested-With',
+    'Content-Type',
+    'Accept',
+    'X-Access-Token',
+  ],
+  credentials: true,
+  methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+  origin: "localhost:4200",
+  preflightContinue: false,
+};
+
+router.use(cors());
 
 router.post(
   '/api/users/signup',
@@ -19,6 +37,7 @@ router.post(
   ],
   validateRequest,
   async (req: Request, res: Response) => {
+    console.log('Create user');
     const { email, password } = req.body;
 
     const existingUser = await User.findOne({ email });
@@ -27,7 +46,11 @@ router.post(
       throw new BadRequestError('Email in use');
     }
 
-    const user = User.build({ email, password });
+    console.log('Create user');
+
+    const cities: string[] = [];
+    const stations: string[] = [];
+    const user = User.build({ email, password ,cities,stations});
     await user.save();
 
     // Generate JWT
@@ -47,5 +70,6 @@ router.post(
     res.status(201).send(user);
   }
 );
+
 
 export { router as signupRouter };
