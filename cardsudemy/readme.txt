@@ -94,3 +94,13 @@ etc/host
 sudo nano /etc/hosts   127.0.0.1 measuring.dev
 
 -----------------------------------------------------------
+SSL ANGULAR
+
+ng serve \
+    --ssl true \
+    --ssl-cert "/home/john/ssl/example.crt" \
+    --ssl-key "/home/john/ssl/example.key"
+
+https://medium.com/@rubenvermeulen/running-angular-cli-over-https-with-a-trusted-certificate-4a0d5f92747a
+
+-----------------------------------------------------------

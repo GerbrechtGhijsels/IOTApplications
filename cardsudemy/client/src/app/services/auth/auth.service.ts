@@ -72,6 +72,10 @@ export class AuthService {
   signup(email, pass) {
     console.log('Submitting');
     if (email !== '' && pass !== '' ) {
+      this.server.request('GET', '/api/users/currentuser').subscribe((response: any) => {
+
+      });
+
       return this.server.request('POST', '/api/users/signup', {
         email: email,
         password: pass
@@ -111,13 +115,13 @@ export class AuthService {
   }
 
   addCity(name: string) {
-    return this.server.request('POST', '/api/users/user/stations', {
+    return this.server.request('PUT', '/api/users/user/stations', {
       city: name
     });
   }
 
   addStation(name: string) {
-    return this.server.request('POST', '/api/users/user/stations', {
+    return this.server.request('PUT', '/api/users/user/stations', {
       station: name
     });
   }

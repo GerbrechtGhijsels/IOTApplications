@@ -8,6 +8,14 @@ build:
   local:
     push: false
   artifacts:
+    - image: gg/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.*'
+            dest: .
     - image: gg/auth
       context: auth
       docker:

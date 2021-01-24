@@ -2,8 +2,12 @@ import express from 'express';
 import {currentUser, NotFoundError} from '../common';
 import { User } from '../models/user';
 
+import cors from 'cors';
+
 const router = express.Router();
 
+
+router.use(cors());
 router.get('/api/users/currentuser', currentUser, (req, res) => {
   res.send({ currentUser: req.currentUser || null });
 });

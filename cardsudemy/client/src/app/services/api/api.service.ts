@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {environment} from "../../../environments/environment";
 
 const baseUrl = environment.config.baseURL;
@@ -21,23 +21,44 @@ export class ApiService {
         this.email = email;
     }
 
+
+
+
     request(method: string, route: string, data?: any) {
         if (method === 'GET') {
             return this.get(route, data);
         }
 
-        const header = (this.loggedIn) ? { Authorization: `Bearer ${this.token}` } : undefined;
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Access-Control-Allow-Origin': 'https://localhost:4200/'
+        });
+
+        if(this.loggedIn){
+            headers.append('Authorization', `Bearer ${this.token}`);
+        }
+
+        //const header = (this.loggedIn) ? { Authorization: `Bearer ${this.token}` } : undefined;
 
         return this.http.request(method, baseUrl + route, {
             body: data,
             responseType: 'json',
             observe: 'body',
-            headers: header
+            headers: headers
         });
     }
 
     get(route: string, data?: any) {
-        const header = (this.loggedIn) ? { Authorization: `Bearer ${this.token}` } : undefined;
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Access-Control-Allow-Origin': 'https://localhost:4200/'
+        });
+
+        if(this.loggedIn){
+            headers.append('Authorization', `Bearer ${this.token}`);
+        }
 
         let params = new HttpParams();
         if (data !== undefined) {
@@ -48,7 +69,7 @@ export class ApiService {
 
         return this.http.get(baseUrl + route, {
             responseType: 'json',
-            headers: header,
+            headers: headers,
             params
         });
     }
