@@ -15,6 +15,7 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
 
   @Input() set city(city: string) {
     this.cityName = city;
+    console.log("weather card "+city);
     this.weather.getWeather(city)
       .pipe(first())
       .subscribe((payload) => {

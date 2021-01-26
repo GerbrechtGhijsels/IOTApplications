@@ -12,15 +12,20 @@ router.get('/api/users/currentuser', currentUser, (req, res) => {
   res.send({ currentUser: req.currentUser || null });
 });
 
-
-
-
-router.get('/api/users/user/cities', currentUser, (req, res) => {
-  res.send({ currentUser: req.currentUser!.cities || null });
+router.get('/api/users/user/cities', currentUser, async (req, res) => {
+  const user = await User.findById(req.currentUser!.id);
+  if (!user) {
+    throw new NotFoundError();
+  }
+  res.send({cities: user.cities|| null });
 });
 
-router.get('/api/users/user/stations', currentUser, (req, res) => {
-  res.send({ currentUser: req.currentUser!.stations || null });
+router.get('/api/users/user/stations', currentUser, async (req, res) => {
+  const user = await User.findById(req.currentUser!.id);
+  if (!user) {
+    throw new NotFoundError();
+  }
+  res.send({Stations: user.stations|| null });
 });
 
 router.put('/api/users/user/cities', currentUser, async (req, res) => {
@@ -28,7 +33,11 @@ router.put('/api/users/user/cities', currentUser, async (req, res) => {
   if (!user) {
     throw new NotFoundError();
   }
-  user.stations.push(req.body.city);
+  const { city} = req.body;
+  user.cities.push(req.body.city);
+  console.log(req.body);
+  console.log(req.body.city);
+  console.log(city);
   await user.save();
   res.send({ currentUser: req.currentUser || null });
 });

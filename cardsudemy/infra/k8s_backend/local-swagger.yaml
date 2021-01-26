@@ -1,0 +1,406 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: local-swagger
+  labels:
+    name: local-swagger
+data:
+  swagger: |
+    info:
+      version: 1.0.0
+      title: Simple weather API
+    paths:
+      /api/measurements/all/query:
+        get:
+          summary: measurements
+          operationId: getAllMeasurementswithQuery
+          description: test
+          produces:
+          - application/json
+          parameters:
+            in: query
+            name: searchString
+            description: return overview of measurements
+            required: false
+            type: string
+          responses:
+            200:
+              description: search results matching criteria
+              schema:
+                type: array
+                items:
+                $ref: '#/definitions/Measurement'
+            400:
+              description: bad input parameter
+      /api/measurements/overview/{type}:
+        get:
+          summary: measurements
+          operationId: getAllMeasurementswithtype
+          description: test
+          produces:
+          - application/json
+          parameters:
+            in: query
+            name: type
+            description: view type
+            required: false
+            type: string
+          responses:
+            200:
+              description: search results matching criteria
+              schema:
+                type: array
+                items:
+                $ref: '#/definitions/Measurement'
+            400:
+              description: bad input parameter
+      /api/measurements/{id}:
+        get:
+          summary: measurements
+          operationId: getMeasurement
+          description: test
+          produces:
+          - application/json
+          parameters:
+            in: query
+            name: id
+            description: return overview of measurements
+            required: false
+            type: string
+          responses:
+            200:
+              description: search results matching criteria
+              schema:
+                type: array
+                items:
+                $ref: '#/definitions/Measurement'
+            400:
+              description: bad input parameter
+      /api/measurements/overview/latest/{type}:
+        get:
+          summary: measurements
+          operationId: returnoverviewlatestmeasurements
+          description: test
+          produces:
+          - application/json
+          parameters:
+            in: query
+            name: type
+            description: view type
+            required: false
+            type: string
+          responses:
+            200:
+              description: search results matching criteria
+            schema:
+              type: array
+            items:
+              $ref: '#/definitions/Measurement'
+            400:
+              description: bad input parameter
+      /api/measurements:
+        post:
+          summary: adds an measurement
+          operationId: addMeasurement
+          description: Adds an measurement to the system
+          consumes:
+          - application/json
+          produces:
+          - application/json
+          parameters:
+          - name: Measurement
+            in: body
+            description: Measurement item to add
+            schema:
+              $ref: '#/definitions/Measurement'
+          responses:
+            201:
+              description: item created
+            400:
+              description: invalid input, object invalid
+            409:
+              description: an existing item already exists
+      /api/users/currentuser:
+        get:
+          summary: User
+          operationId: return current user
+          description: test
+          produces:
+          - application/json
+          responses:
+            200:
+              description: current user
+            schema:
+              type: array
+              items:
+              $ref: '#/definitions/User'
+            400:
+              description: bad input parameter
+      /api/users/signin:
+        post:
+          summary: sign in user
+          operationId: loginUser
+          description: login in user
+          consumes:
+          - application/json
+          produces:
+          - application/json
+          parameters:
+          - name: email
+            in: body
+            description: The email for login
+            required: true
+            type: string
+          - name: password
+            in: body
+            description: The password for login in clear text
+            required: true
+            type: string
+          responses:
+            201:
+              description: item created
+            400:
+              description: invalid input, object invalid
+            409:
+              description: an existing item already exists
+      /api/users/signout:
+        post:
+          summary: sign out user
+          operationId: logoutUser
+          description: logout user
+          consumes:
+          - application/json
+          produces:
+          - application/json
+          responses:
+            201:
+              description: item created
+            400:
+              description: invalid input, object invalid
+            409:
+              description: an existing item already exists
+      /api/users/signup:
+        post:
+          summary: sign up user
+          operationId: logupUser
+          description: logup user
+          consumes:
+          - application/json
+          produces:
+          - application/json
+          parameters:
+          - name: email
+            in: body
+            description: The email for login
+            required: true
+            type: string
+          - name: password
+            in: body
+            description: The password for login in clear text
+            required: true
+            type: string
+          responses:
+            201:
+              description: item created
+            400:
+              description: invalid input, object invalid
+            409:
+              description: an existing item already exists
+      /api/stations/{id}:
+        get:
+          summary: station
+          operationId: searchstation
+          description: test
+          produces:
+          - application/json
+          parameters:
+            in: query
+            name: id
+            description: return of station
+            required: false
+            type: string
+          responses:
+            200:
+              description: search results matching criteria
+            schema:
+              type: array
+              items:
+              $ref: '#/definitions/Station'
+            400:
+              description: bad input parameter
+      /api/stations:
+        get:
+          summary: station
+          operationId: searchstations
+          description: test
+          produces:
+          - application/json
+          parameters:
+          - in: query
+            name: body
+            description: all stations
+            schema:
+              $ref: '#/definitions/Station'
+          responses:
+            200:
+              description: search results matching criteria
+            schema:
+              type: array
+              items:
+              $ref: '#/definitions/Station'
+            400:
+              description: bad input parameter
+        post:
+          summary: adds an station
+          operationId: addStation
+          description: Adds an station to the system
+          consumes:
+          - application/json
+          produces:
+          - application/json
+          parameters:
+            in: body
+            name: station
+            description: station item to add
+            schema:
+              $ref: '#/definitions/Station'
+          responses:
+            201:
+              description: item created
+            400:
+              description: invalid input, object invalid
+            409:
+              description: an existing item already exists
+    definitions:
+      Measurement:
+        type: object
+        required:
+          measurementid
+          stn
+          yyyymmdd
+        properties:
+          measurementid: 
+            type: string
+          stn: 
+            type: string
+          yyyymmdd: 
+            type: string
+          ddvec: 
+            type: string
+          fhvec: 
+            type: string
+          fg: 
+            type: string
+          fhx: 
+            type: string
+          fhxh: 
+            type: string
+          fhn: 
+            type: string
+          fhnh: 
+            type: string
+          fxx: 
+            type: string
+          fxxh: 
+            type: string
+          tg: 
+            type: string
+          tn: 
+            type: string
+          tnh: 
+            type: string
+          tx: 
+            type: string
+          txh: 
+            type: string
+          t10n: 
+            type: string
+          t10nh: 
+            type: string
+          sq: 
+            type: string
+          sp: 
+            type: string
+          q: 
+            type: string
+          dr: 
+            type: string
+          rh: 
+            type: string
+          rhx: 
+            type: string
+          rhxh: 
+            type: string
+          pg: 
+            type: string
+          px: 
+            type: string
+          pxh: 
+            type: string
+          pn: 
+            type: string
+          pnh: 
+            type: string
+          vvn: 
+            type: string
+          vvnh: 
+            type: string
+          vvx: 
+            type: string
+          vvxh: 
+            type: string
+          ng: 
+            type: string
+          ug: 
+            type: string
+          ux:
+            type: string
+          uxh:
+            type: string
+          un:
+            type: string
+          unh:
+            type: string
+          ev24:
+            type: string
+      Station:
+        type: object
+        required:
+          stn
+          lon
+          lat
+          alt
+          name
+        properties:
+          stn:
+            type: number
+            example: 303
+          lon:
+            type: number
+            example: 123
+          lat:
+            type: number
+            example: 123
+          alt:
+            type: number
+            example: 123
+          name:
+            type: string
+            example: Heemskerk
+          amountofmeasurements:
+            type: number
+            example: 0
+      User:
+        type: object
+        required:
+          email
+          password
+        properties:
+          email:
+            type: string
+            example: test@test.com
+          password:
+            type: string
+            example: password
+    host: measuring.local
+    schemes: https

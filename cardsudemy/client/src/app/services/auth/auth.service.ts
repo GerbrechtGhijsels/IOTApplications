@@ -72,10 +72,6 @@ export class AuthService {
   signup(email, pass) {
     console.log('Submitting');
     if (email !== '' && pass !== '' ) {
-      this.server.request('GET', '/api/users/currentuser').subscribe((response: any) => {
-
-      });
-
       return this.server.request('POST', '/api/users/signup', {
         email: email,
         password: pass
@@ -88,34 +84,35 @@ export class AuthService {
 
 
   logout() {
-    this.server.request('POST', '/api/users/signout', {
-
-    }).subscribe((response: any) => {
-
-    });
+    this.server.request('POST', '/api/users/signout');
 
     this.server.setLoggedIn(false);
     delete this.token;
 
     this.loggedIn.next(false);
     localStorage.clear();
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 
-  getCities() {
-    return this.server.request('GET', '/api/users/user/cities').subscribe((response: any) => {
+  async getCities() {
+    let cities:[];
 
-    });
+    let response: any = await this.server.request('GET', '/api/users/user/cities').toPromise();
+    cities = response.cities;
+    console.log("2" + cities);
+    return cities;
   }
 
-  getStations() {
-    return this.server.request('GET', '/api/users/user/stations').subscribe((response: any) => {
+  async getStations() {
+    let stations:[];
 
-    });
+    let response: any = await this.server.request('GET', '/api/users/user/stations').toPromise();
+    stations = response.stations;
+    return stations;
   }
 
   addCity(name: string) {
-    return this.server.request('PUT', '/api/users/user/stations', {
+    return this.server.request('PUT', '/api/users/user/cities', {
       city: name
     });
   }

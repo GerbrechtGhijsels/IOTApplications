@@ -51,7 +51,6 @@ export class AddComponent implements OnInit, OnDestroy {
       });
       this.stationList.sort();
     });
-
   }
 
   request(method: string, route: string, data?: any) {
@@ -82,7 +81,6 @@ export class AddComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.sub1.unsubscribe();
   }
 
 }

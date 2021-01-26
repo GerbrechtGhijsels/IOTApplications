@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swagger-ui
+  labels:
+    app: swagger-ui
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: swagger-ui
+  template:
+    metadata:
+      labels:
+        app: swagger-ui
+    spec:
+      containers:
+      - name: swagger-ui
+        image: swaggerapi/swagger-ui:v3.14.1
+        ports:
+        - containerPort: 8080
+        env:
+        - name: BASE_URL
+          value: /swagger-ui
+        - name: API_URLS
+          value: >-
+            [
+            {url:'/swagger-ui/file-swagger/local.swagger.yml',name:'Local swagger'}
+            ]
+        volumeMounts:
+        - name: local-swagger
+          mountPath: /usr/share/nginx/html/file-swagger
+      volumes:
+        - name: local-swagger
+          configMap:
+            name: local-swagger
+            items:
+              - key: swagger
+                path: local.swagger.yml

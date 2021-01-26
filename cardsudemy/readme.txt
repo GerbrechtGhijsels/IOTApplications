@@ -3,7 +3,7 @@ JWK_KEY = ASDF
 kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf
 
 
-docker build -t gg/client ./client
+kubectl create namespace cert-manager
 docker build -t gg/measurements ./measurements
 docker build -t gg/stations ./stations
 docker build -t gg/auth ./auth
@@ -104,3 +104,5 @@ ng serve \
 https://medium.com/@rubenvermeulen/running-angular-cli-over-https-with-a-trusted-certificate-4a0d5f92747a
 
 -----------------------------------------------------------
+skaffold dev --filename='skaffold_frontend.yaml'
+skaffold dev --filename='skaffold_backend.yaml'
