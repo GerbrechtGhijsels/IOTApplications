@@ -56,6 +56,7 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
 
   @Input() addMode;
   @Output() cityStored = new EventEmitter();
+  @Output() stationStored = new EventEmitter();
   citesWeather: Object;
   darkMode: boolean;
   sub1: Subscription;
@@ -101,6 +102,7 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
   addStation() {
     this.auth.addStation(this.stationNumber).subscribe(() => {
 
+      this.stationStored.emit();
       setTimeout(() => this.stationAdded = false, 2000);
     });
   }

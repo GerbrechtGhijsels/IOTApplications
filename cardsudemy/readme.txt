@@ -25,6 +25,9 @@ mongo mongodb://auth-mongo-depl-d4cc77cf6-5w5fl.db:27017
 
 kubectl port-forward auth-mongo-depl-d4cc77cf6-5w5fl 27017:27017
 
+
+kubectl port-forward stations-mongo-depl-6b646cf8db-p57nj 27017:27017
+
 -----------------------------------------------------------
 DB ports
 

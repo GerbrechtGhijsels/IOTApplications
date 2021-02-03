@@ -15,6 +15,7 @@ import {SignupComponent} from './pages/signup/signup.component';
 import {ErrorComponent} from './ui/error/error.component';
 import {environment} from '../environments/environment';
 import {NguiAutoCompleteModule} from '@ngui/auto-complete';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import {FormsModule} from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
@@ -35,6 +36,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     AppRoutingModule,
     HttpClientModule,
     NguiAutoCompleteModule,
+    AutocompleteLibModule,
     FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
