@@ -4,13 +4,26 @@ import { MeasurementsCollection } from '../common';
 
 import { clientCode, RequiredView} from '../viewer/creator'
 
+import { MongooseQueryParser } from 'mongoose-query-parser';
+
 const router = express.Router();
+const parser = new MongooseQueryParser();
 
 router.get('/api/measurements/all/query', async (req: Request, res: Response) => {
   console.dir(req.query)
   var measurements = await Measurement.find(req.query).limit(100);
 
  
+  res.send(measurements);
+});
+
+router.get('/api/measurements/all/test', async (req: Request, res: Response) => {
+  console.dir(req.query);
+  const parsedQuery = parser.parse(req.query);
+  console.dir(parsedQuery);
+  var measurements = await Measurement.find(parsedQuery.filter).sort(parsedQuery.sort || [['yyyymmdd', -1]]).limit(parsedQuery.limit || 100);
+
+
   res.send(measurements);
 });
 
@@ -23,7 +36,7 @@ router.get('/api/measurements/overview/:type', async (req: Request, res: Respons
 
   var list = [];
   while (iterator.valid()) {
-    var measurement =  clientCode(req.params.type,iterator.next())
+    var measurement =  clientCode(req.params.type,iterator.next());
     list.push(measurement);
   }
 
@@ -39,7 +52,7 @@ router.get('/api/measurements/overview/latest/:type', async (req: Request, res: 
 
   var list = [];
   while (iterator.valid()) {
-    var measurement =  clientCode(req.params.type,iterator.next())
+    var measurement =  clientCode(req.params.type,iterator.next());
     list.push(measurement);
   }
 

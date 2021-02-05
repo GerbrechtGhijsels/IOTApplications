@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+
 /** 
 # YYYYMMDD = Datum (YYYY=jaar MM=maand DD=dag); 
 # DDVEC    = Vectorgemiddelde windrichting in graden (360=noord, 90=oost, 180=zuid, 270=west, 0=windstil/variabel). Zie http://www.knmi.nl/kennis-en-datacentrum/achtergrond/klimatologische-brochures-en-boeken; 

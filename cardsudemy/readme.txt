@@ -36,6 +36,8 @@ DB ports
 -----------------------------------------------------------
 db Import
 
+Works when host computer is restarted and no other localhost are started.
+
 mongoimport --host 127.0.0.1:30007 --jsonArray --db stations --collection stations --drop --file stations.json
 
 mongoimport --host 127.0.0.1:30008 --jsonArray --db measurements --collection measurements --drop --file measurements.json
@@ -109,3 +111,10 @@ https://medium.com/@rubenvermeulen/running-angular-cli-over-https-with-a-trusted
 -----------------------------------------------------------
 skaffold dev --filename='skaffold_frontend.yaml'
 skaffold dev --filename='skaffold_backend.yaml'
+
+
+-----------------------------------------------------------
+knmi api key:
+eyJvcmciOiI1ZTU1NGUxOTI3NGE5NjAwMDEyYTNlYjEiLCJpZCI6IjcwNWE2NDRmZjRhMjQ4NzA5YzgzMTdjZjk0MTkxYzNhIiwiaCI6Im11cm11cjEyOCJ9
+
+https://api.dataplatform.knmi.nl/open-data/datasets/Actuele10mindataKNMIstations/versions/2/files
