@@ -25,7 +25,7 @@ router.get('/api/users/user/stations', currentUser, async (req, res) => {
   if (!user) {
     throw new NotFoundError();
   }
-  res.send({Stations: user.stations|| null });
+  res.send({stations: user.stations|| null });
 });
 
 router.put('/api/users/user/cities', currentUser, async (req, res) => {

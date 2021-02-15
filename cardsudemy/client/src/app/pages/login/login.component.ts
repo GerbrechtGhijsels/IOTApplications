@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../services/auth/auth.service';
+import {environment} from "../../../environments/environment";
 import {first, tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
 

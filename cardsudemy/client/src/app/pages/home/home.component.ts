@@ -16,7 +16,5 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.cities = this.auth.getCities();
     this.stations = this.auth.getStations();
-    console.log("3"+ this.cities);
-    console.log(this.stations);
   }
 }

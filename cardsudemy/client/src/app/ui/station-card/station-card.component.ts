@@ -8,9 +8,9 @@ import {AuthService} from '../../services/auth/auth.service';
 import { ApiService } from '../../services/api/api.service';
 
 @Component({
-  selector: 'app-weather-card',
-  templateUrl: './weather-card.component.html',
-  styleUrls: ['./weather-card.component.css']
+  selector: 'app-station-card',
+  templateUrl: './station-card.component.html',
+  styleUrls: ['./station-card.component.css']
 })
 
 
@@ -59,55 +59,37 @@ import { ApiService } from '../../services/api/api.service';
  */
 
 
-export class WeatherCardComponent implements OnInit, OnDestroy {
+export class StationCardComponent implements OnInit, OnDestroy {
 
-  @Input() set city(city: string) {
-    this.cityName = city;
-    console.log("weather card "+city);
-    this.weather.getWeather(city)
-      .pipe(first())
-      .subscribe((payload) => {
-        this.state = payload.weather[0].main;
-        this.temp = Math.ceil(payload.main.temp);
-      }, (err) => {
-        this.errorMessage = err.error.message;
-        setTimeout(() => {
-          this.errorMessage = '';
-        }, 3000);
-      });
-    this.weather.getForecast(city)
-      .pipe(first())
-      .subscribe((payload) => {
-        this.maxTemp = Math.round(payload[0].main.temp);
-        this.minTemp = Math.round(payload[0].main.temp);
-        for (const res of payload) {
-          if (new Date().toLocaleDateString('en-GB') === new Date(res.dt_txt).toLocaleDateString('en-GB')) {
-            this.maxTemp = res.main.temp > this.maxTemp ? Math.round(res.main.temp) : this.maxTemp;
-            this.minTemp = res.main.temp < this.minTemp ? Math.round(res.main.temp) : this.minTemp;
-          }
-        }
-      }, (err) => {
-        this.errorMessage = err.error.message;
-        setTimeout(() => {
-          this.errorMessage = '';
-        }, 3000);
-      });
+
+  @Input() set station (stn: string) {
+    this.stationNumber = stn;
+    console.log("weather card "+stn);
+    this.api.request('GET', '/api/measurements/all/test?stn='+stn+'&limit=1').subscribe((response: any) => {
+        console.log(response[0]);
+      //this.state = response.weather[0].main;
+      this.temp = Math.ceil(response[0].tg);
+    },
+        (error) => {
+      this.errorMessage = error.error.message;
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 3000);
+    });
+
   }
 
-
-
   @Input() addMode;
-  @Output() cityStored = new EventEmitter();
-  citesWeather: Object;
+  @Output() stationStored = new EventEmitter();
   darkMode: boolean;
   sub1: Subscription;
-  state: string;
+  state: string = 'Sunny';
   temp: number;
   maxTemp: number;
   minTemp: number;
   errorMessage: string;
-  cityName;
-  cityAdded = false;
+  stationNumber;
+  stationAdded = false;
 
   constructor(public weather: WeatherService,
               public router: Router,
@@ -126,22 +108,20 @@ export class WeatherCardComponent implements OnInit, OnDestroy {
     this.sub1.unsubscribe();
   }
 
-  openDetailsCity() {
+
+  openDetailsStation() {
     if (!this.addMode) {
-      this.router.navigateByUrl('/details/' + this.cityName);
+      console.log(this.stationNumber);
+      this.router.navigateByUrl('/stations/' + this.stationNumber);
     }
   }
 
-  addCity() {
-    this.auth.addCity(this.cityName).subscribe(() => {
-      this.cityName = null;
-      this.maxTemp = null;
-      this.minTemp = null;
-      this.state = null;
-      this.temp = null;
-      this.cityAdded = true;
-      this.cityStored.emit();
-      setTimeout(() => this.cityAdded = false, 2000);
+  addStation() {
+    this.auth.addStation(this.stationNumber).subscribe(() => {
+
+      this.stationStored.emit();
+      setTimeout(() => this.stationAdded = false, 2000);
     });
   }
+
 }

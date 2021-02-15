@@ -112,6 +112,7 @@ https://medium.com/@rubenvermeulen/running-angular-cli-over-https-with-a-trusted
 skaffold dev --filename='skaffold_frontend.yaml'
 skaffold dev --filename='skaffold_backend.yaml'
 
+skaffold dev --filename='skaffold_frontend_mock.yaml'
 
 -----------------------------------------------------------
 knmi api key:

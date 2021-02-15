@@ -1,7 +1,7 @@
-<section class="weather__card" (click)="openDetailsCity()"
-         *ngIf="addMode ? !cityAdded && cityName : true"
-         [ngClass]="{'weather__card-dark': darkMode, 'weather__card-add': addMode}">
-  <span class="city-name__text">{{cityName}}</span>
+<section class="station__card" (click)="openDetailsStation()"
+         *ngIf="addMode ? !stationAdded && stationNumber : true"
+         [ngClass]="{'station__card-dark': darkMode, 'station__card-add': addMode}">
+  <span class="station-name__text">{{stationNumber}}</span>
   <div class="weather-icon__container" [ngSwitch]="true">
     <svg *ngSwitchCase="state === 'Sunny' || state === 'Clear'" viewBox="2050 -845 262 262">
       <circle cx="131" cy="131" r="131" fill="#ffde17" data-name="Sun Icon" transform="translate(2050 -845)"/>
@@ -52,9 +52,7 @@
     </svg>
   </div>
   <div class="temperature-text__container">
-    <span class="temperature__text">{{ citesWeather }}</span>
     <span class="temperature-metric__text">{{ temp }}°</span>
-    <span class="weather-condition__text">{{ state }}</span>
   </div>
   <section class="min-max__container">
     <div class="min__container">
@@ -73,12 +71,12 @@
       <span class="max__text">Max</span>
     </div>
   </section>
-  <button class="add-city-btn" *ngIf="addMode" (click)="addCity()">ADD CITY +</button>
+  <button class="add-station-btn" *ngIf="addMode" (click)="addStation()">ADD STATION +</button>
 
 </section>
 
-<div *ngIf="cityAdded" class="city-added-note">
-  <h5 class="add-success-text">City has been successfully added!</h5>
+<div *ngIf="stationAdded" class="station-added-note">
+  <h5 class="add-success-text">Station has been successfully added!</h5>
   <svg viewBox="0 0 50 50" height="5rem">
     <circle cx="25" cy="25" r="25" fill="#25ae88"/>
     <path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"

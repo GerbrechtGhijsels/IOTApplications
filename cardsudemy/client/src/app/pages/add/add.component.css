@@ -42,11 +42,19 @@
   flex-flow: column;
 }
 
-.city-search-body, .station-search-body {
+.city-search-body{
   width: 100%;
   min-height: 60%;
   display: flex;
   justify-content: center;
+}
+
+.station-search-body {
+  width: 100%;
+  min-height: 60%;
+  display: flex;
+  justify-content: center;
+  z-index: 0;
 }
 
 .city-search-hr {

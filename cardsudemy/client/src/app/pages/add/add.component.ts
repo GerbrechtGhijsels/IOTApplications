@@ -101,14 +101,16 @@ export class AddComponent implements OnInit, OnDestroy {
       this.cityList.sort();
     });
     **/
-    this.api.request('GET', '/api/stations').subscribe((response: any) => {
-      this.stationList = [];
-      response.forEach((station) => {
-        this.stationList.push(station);
-      });
-      this.stationList.sort();
-      console.log(this.stationList);
-    });
+
+        this.api.request('GET', '/api/stations').subscribe((response: any) => {
+            this.stationList = [];
+            response.forEach((station) => {
+                this.stationList.push(station);
+            });
+            this.stationList.sort();
+            console.log(this.stationList);
+        });
+
   }
 
   private initializeMap() {
@@ -145,39 +147,42 @@ export class AddComponent implements OnInit, OnDestroy {
       this.source = this.map.getSource('stations');
 
 
-      this.api.request('GET', '/api/stations').subscribe((response: any) => {
-        this.stationList = [];
-        response.forEach((station) => {
-          this.stationList.push(station);
-        });
-        this.stationList.sort();
+
+            this.api.request('GET', '/api/stations').subscribe((response: any) => {
+                this.stationList = [];
+                response.forEach((station) => {
+                    this.stationList.push(station);
+                });
+                this.stationList.sort();
 
 
-        console.log("list test");
+                console.log("list test");
 
-        console.log(this.arrayOfKeyValues2);
+                console.log(this.arrayOfKeyValues2);
 
-        console.log(this.stationList);
-        let markers: GeoJson[] = [];
-        this.stationList.forEach((station) => {
-          const geomarker = new GeoJson([station.lon,station.lat],{message: station.name})
-          markers.push(geomarker);
-        });
-        console.log(markers);
-        this.stationCollection = new FeatureCollection(markers);
-        this.source.setData(this.stationCollection);
-        console.log(this.stationCollection);
-      });
+                console.log(this.stationList);
+                let markers: GeoJson[] = [];
+                this.stationList.forEach((station) => {
+                    const geomarker = new GeoJson([station.lon, station.lat], {message: station.name})
+                    markers.push(geomarker);
+                });
+                console.log(markers);
+                this.stationCollection = new FeatureCollection(markers);
+                this.source.setData(this.stationCollection);
+                console.log(this.stationCollection);
+            });
 
-      this.map.addLayer({
-        id: 'stations',
-        source: 'stations',
-        type: 'symbol',
-        'layout': {
-          'icon-image': 'rocket-15'
-        }
-      });
+            this.map.addLayer({
+                id: 'stations',
+                source: 'stations',
+                type: 'symbol',
+                'layout': {
+                    'icon-image': 'rocket-15'
+                }
+            });
+
     });
+
 
   }
 

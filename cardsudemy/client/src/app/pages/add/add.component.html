@@ -56,12 +56,13 @@
                         </svg>
                     </button>
                 </div>
+                <span class="city-search-hr"></span>
             </div>
 
             <div class="station-search-body">
                 <span *ngIf="showStationNote" class="station-invalid-note">Nothing found</span>
-                <app-weather-card (stationStored)="selectedStation = ''" *ngIf="cardStation" [station]="cardStation"
-                                  [addMode]="true"></app-weather-card>
+                <app-station-card (stationStored)="selectedStation = ''" *ngIf="cardStation" [station]="cardStation.stn"
+                                  [addMode]="true"></app-station-card>
             </div>
 
         </div>
