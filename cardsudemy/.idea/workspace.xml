@@ -3,25 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="92ea48b0-93cb-4004-b7cd-e66cb8ab1b2d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auth/src/routes/current-user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/auth/src/routes/current-user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/oud/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/oud/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/oud/generate.sh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/oud/openssl-custom.cnf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/pages/add/add.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/pages/add/add.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/pages/add/add.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/pages/add/add.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/pages/add/add.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/pages/add/add.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/pages/details/details.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/pages/details/details.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/pages/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/pages/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/pages/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/pages/home/home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/pages/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/pages/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/ui/weather-card/weather-card.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/ui/weather-card/weather-card.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/ui/weather-card/weather-card.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/ui/weather-card/weather-card.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/pages/stations/stations.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/pages/stations/stations.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/pages/stations/stations.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/pages/stations/stations.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/app/services/measurements/measurements.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/services/measurements/measurements.service.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,8 +27,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/app/services/measurements/measurements.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1158">
-              <caret line="48" column="16" lean-forward="true" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
+            <state relative-caret-position="453">
+              <caret line="37" column="19" lean-forward="true" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -48,99 +36,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/app/pages/stations/stations.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="536" lean-forward="true" selection-start-line="536" selection-end-line="536" />
+            <state relative-caret-position="179">
+              <caret line="592" column="31" selection-start-line="592" selection-start-column="29" selection-end-line="592" selection-end-column="31" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
-                <element signature="e#1451#88975#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/app/app-routing.module.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="30" lean-forward="true" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/app/app.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="389">
-              <caret line="57" column="36" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stations/node_modules/typescript/lib/lib.es5.d.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="664" column="4" selection-start-line="664" selection-start-column="4" selection-end-line="664" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/app/services/ui/ui.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="6" selection-end-column="2" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/app/pages/stations/stations.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="73" column="28" lean-forward="true" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
-              <folding>
-                <element signature="e#1905#1911#1" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/app/services/auth/auth.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="85" column="12" selection-start-line="85" selection-start-column="12" selection-end-line="85" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/app/services/api/api.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
-              <folding>
-                <element signature="e#0#43#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/app/pages/details/details.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-755">
-              <caret line="40" column="54" selection-start-line="40" selection-start-column="54" selection-end-line="40" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -149,11 +49,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>fav-city-name</find>
-      <find>fav-city-added-btn</find>
-      <find>station-invalid-note</find>
-      <find>invalid-note</find>
-      <find>cityStored</find>
       <find>fav-station</find>
       <find>fav-station-image</find>
       <find>city-search-wrapper</find>
@@ -179,6 +74,11 @@
       <find>loggedIn</find>
       <find>maart</find>
       <find>weatherData</find>
+      <find>body-content__wrapper</find>
+      <find>weatherChartData</find>
+      <find>tempChartData</find>
+      <find>main-weather__card</find>
+      <find>ug</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/stations</dir>
@@ -239,11 +139,11 @@
         <option value="$PROJECT_DIR$/client/src/app/pages/add/add.component.ts" />
         <option value="$PROJECT_DIR$/client/src/app/ui/station-card/station-card.component.ts" />
         <option value="$PROJECT_DIR$/readme.txt" />
-        <option value="$PROJECT_DIR$/client/src/app/pages/stations/stations.component.html" />
         <option value="$PROJECT_DIR$/client/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/client/src/app/app-routing.module.ts" />
-        <option value="$PROJECT_DIR$/client/src/app/pages/stations/stations.component.ts" />
         <option value="$PROJECT_DIR$/client/src/app/services/measurements/measurements.service.ts" />
+        <option value="$PROJECT_DIR$/client/src/app/pages/stations/stations.component.html" />
+        <option value="$PROJECT_DIR$/client/src/app/pages/stations/stations.component.ts" />
       </list>
     </option>
   </component>
@@ -540,18 +440,18 @@
       <workItem from="1613036574833" duration="15197000" />
       <workItem from="1613222548292" duration="1769000" />
       <workItem from="1613386523173" duration="1215000" />
-      <workItem from="1613390021409" duration="19715000" />
+      <workItem from="1613390021409" duration="26169000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="289139000" />
+    <option name="totallyTimeSpent" value="295593000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24678111" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24678111" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -566,7 +466,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="TypeScript" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5035765" side_tool="true" weight="0.25060242" />
-      <window_info active="true" anchor="bottom" x="-82" y="112" width="1440" height="785" id="Terminal" order="12" sideWeight="0.49642345" visible="true" weight="0.26024097" />
+      <window_info anchor="bottom" x="-82" y="112" width="1440" height="785" id="Terminal" order="12" sideWeight="0.49642345" visible="true" weight="0.26024097" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -723,9 +623,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/pages/stations/stations.component.css">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/app/ui/weather-card/weather-card.component.html">
       <provider selected="true" editor-type-id="text-editor" />
@@ -918,16 +815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/pages/stations/stations.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="73" column="28" lean-forward="true" selection-start-line="73" selection-start-column="28" selection-end-line="73" selection-end-column="28" />
-          <folding>
-            <element signature="e#1905#1911#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stations/node_modules/typescript/lib/lib.es5.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -935,20 +822,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/pages/stations/stations.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="35" column="19" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/pages/stations/stations.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="69" column="40" lean-forward="true" selection-start-line="69" selection-start-column="40" selection-end-line="69" selection-end-column="40" />
+          <folding>
+            <element signature="n#svg#0;n#div#0;n#!!top" />
+            <element signature="e#1905#1911#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/app/services/measurements/measurements.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1158">
-          <caret line="48" column="16" lean-forward="true" selection-start-line="48" selection-start-column="16" selection-end-line="48" selection-end-column="16" />
+        <state relative-caret-position="453">
+          <caret line="37" column="19" lean-forward="true" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/app/pages/stations/stations.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="536" lean-forward="true" selection-start-line="536" selection-end-line="536" />
+        <state relative-caret-position="179">
+          <caret line="592" column="31" selection-start-line="592" selection-start-column="29" selection-end-line="592" selection-end-column="31" />
           <folding>
             <element signature="e#0#59#0" expanded="true" />
-            <element signature="e#1451#88975#0" />
           </folding>
         </state>
       </provider>

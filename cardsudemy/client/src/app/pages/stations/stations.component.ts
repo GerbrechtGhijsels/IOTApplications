@@ -31,11 +31,72 @@ export class StationsComponent implements OnInit, OnDestroy {
   sub2: Subscription;
   errorMessage: string;
 
-  weatherChartData: Array<number> = [];
+  public lineChartLegend = false;
+  public lineChartType = "line";
 
-  public lineChartData: ChartDataSets[] = [{ data: [] }];
-  public lineChartLabels: Label[] = [];
-  public lineChartOptions: any = {
+  public tempData: ChartDataSets[] = [{ data: [] }];
+  public tempChartLabels: Label[] = [];
+  public tempChartOptions: any = {
+    animation: {
+      animateScale: true,
+      animateRotate: true
+    },
+    scales: {
+      xAxes: [{
+        type: 'time',
+        time: {
+          unit: 'day'
+        },
+        gridLines: {
+          display: false,
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          max: 40,
+          min: -5,
+          stepSize:1
+        },
+        stacked:true,
+        gridLines: {
+          display: false
+        }
+      }]
+    },
+    responsive: true,
+    maintainAspectRatio: false
+  };
+
+
+  public windData: ChartDataSets[] = [{ data: [] }];
+  public windChartLabels: Label[] = [];
+  public windChartOptions: any = {
+    animation: {
+      animateScale: true,
+      animateRotate: true
+    },
+    scales: {
+      xAxes: [{
+        type: 'time',
+        time: {
+          unit: 'day'
+        },
+        gridLines: {
+          display: false,
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          max: 20,
+          min: 0,
+          stepSize:1
+        },
+        stacked:true,
+        gridLines: {
+          display: false
+        }
+      }]
+    },
     responsive: true,
     maintainAspectRatio: false
   };
@@ -501,8 +562,6 @@ export class StationsComponent implements OnInit, OnDestroy {
     }
   ];
 
-  public lineChartLegend = false;
-  public lineChartType = "line";
 
   constructor(public activeRouter: ActivatedRoute, public weather: WeatherService, public ui: UiService, public api: ApiService, public measurementService: MeasurementsService) {
 
@@ -528,19 +587,28 @@ export class StationsComponent implements OnInit, OnDestroy {
         })
     ).subscribe((response: any) => {
       response = this.weatherData;
-      console.log(response);
       let measurement = this.measurementService.converter(response[0]);
       this.temp = Math.ceil(measurement.tg);
 
       this.hum = measurement.ug;
       this.wind = measurement.fg;
-
+      this.tempData = [{ data: [] }];
+      this.tempChartLabels = [];
+      this.windData = [{ data: [] }];
+      this.windChartLabels = [];
       response.forEach((measurement: any) => {
         let measurementUI = this.measurementService.converter(measurement);
-        this.lineChartLabels.push(measurementUI.yyyymmdd);
-        this.weatherChartData.push(measurementUI.tg);
+        if(measurementUI.tg != null)
+        {
+          this.tempChartLabels.push(measurementUI.yyyymmdd);
+          this.tempData[0].data.push(measurementUI.tg);
+        }
+        if(measurementUI.fg != null)
+        {
+          this.windChartLabels.push(measurementUI.yyyymmdd);
+          this.windData[0].data.push(measurementUI.fg);
+        }
       });
-
     }, (error) => {
       this.errorMessage = error.error.message;
       setTimeout(() => {

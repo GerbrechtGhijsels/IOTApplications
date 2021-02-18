@@ -67,12 +67,22 @@
     </section>
     <main class="body-content__wrapper">
       <canvas
-         baseChart [datasets]="lineChartData"
-         [labels]="lineChartLabels"
-         [options]="lineChartOptions"
+         baseChart [datasets]="tempData"
+         [labels]="tempChartLabels"
+         [options]="tempChartOptions"
          [colors]="lineChartColors"
          [legend]="lineChartLegend"
          [chartType]="lineChartType">
+      </canvas>
+    </main>
+    <main class="body-content__wrapper">
+      <canvas
+              baseChart [datasets]="windData"
+              [labels]="windChartLabels"
+              [options]="windChartOptions"
+              [colors]="lineChartColors"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType">
       </canvas>
     </main>
   </section>

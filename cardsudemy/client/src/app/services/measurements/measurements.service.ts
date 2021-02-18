@@ -105,8 +105,19 @@ export class MeasurementsService {
         return Math.round(((number * 0.1) + Number.EPSILON) * 100) / 100;
     }
 
+    stringToDate(text: string) {
+        if(/^(\d){8}$/.test(text)) {
+            var y = text.substr(0, 4),
+                m = text.substr(4, 2),
+                d = text.substr(6, 2);
+            return new Date(y + "-" + m + "-" + d).toISOString();
+        }
+        if(!/^(\d){8}$/.test(text)) {
+
+        }
+    }
+
     converter(measurement:any) {
-        console.log(measurement);
         let uiMeasurement: Measurement = {
             tx: this.stringToNumber(measurement.tx),
             dr: this.stringToNumber(measurement.dr) ,
@@ -148,10 +159,11 @@ export class MeasurementsService {
             vvnh: parseInt(measurement.vvnh),
             vvx: parseInt(measurement.vvx),
             vvxh: parseInt(measurement.vvxh),
-            yyyymmdd: measurement.yyyymmdd
+            yyyymmdd: this.stringToDate(measurement.yyyymmdd)
 
 
         };
+        //console.log(uiMeasurement.yyyymmdd);
         return uiMeasurement;
 
     }
