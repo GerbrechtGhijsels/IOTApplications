@@ -580,7 +580,7 @@ export class StationsComponent implements OnInit, OnDestroy {
           this.stn = route.params.stn;
           this.cityIllustrationPath = '../../assets/cities/default.svg';
 
-          if(true){
+          if(false){
             return this.weatherData;
           }
           return this.api.request('GET', '/api/measurements/all/test?stn=' + this.stn + '&limit=100');

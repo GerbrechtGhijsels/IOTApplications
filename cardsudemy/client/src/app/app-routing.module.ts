@@ -12,7 +12,7 @@ import {AppGuard} from './guards/app.guard';
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AppGuard]},
   {path: 'details/:city', component: DetailsComponent, canActivate: [AppGuard]},
-  {path: 'stations/:stn', component: StationsComponent, canActivate: [AuthGuard]},
+  {path: 'stations/:stn', component: StationsComponent, canActivate: [AppGuard]},
   {path: 'add', component: AddComponent, canActivate: [AppGuard]},
   {path: 'login', component: LoginComponent, canActivate: [AuthGuard]},
   {path: 'signup', component: SignupComponent , canActivate: [AuthGuard]},
