@@ -3,6 +3,7 @@ import {UiService} from './services/ui/ui.service';
 import {AuthService} from './services/auth/auth.service';
 import {take} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {MockService} from "./services/mock/mock.service";
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   userEmail = '';
 
-  constructor(public ui: UiService, public auth: AuthService, public router: Router) {
+  constructor(public ui: UiService, public auth: AuthService, public router: Router, public mock: MockService) {
   }
 
   loggedIn = this.auth.isAuth();
@@ -27,7 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
 
     this.userEmail = this.auth.getEmail();
-
+    this.userEmail = this.mock.user.email;
 
   }
 

@@ -41,6 +41,8 @@ export class ApiService {
 
         //const header = (this.loggedIn) ? { Authorization: `Bearer ${this.token}` } : undefined;
 
+        console.log(headers);
+
         return this.http.request(method, baseUrl + route, {
             body: data,
             responseType: 'json',
@@ -59,6 +61,8 @@ export class ApiService {
         if(this.loggedIn){
             headers.append('Authorization', `Bearer ${this.token}`);
         }
+
+        console.log(headers);
 
         let params = new HttpParams();
         if (data !== undefined) {

@@ -9,6 +9,7 @@ import { concatMap } from 'rxjs/operators';
 import { ChartDataSets, ChartOptions } from "chart.js";
 import { Color, Label } from "ng2-charts";
 import { HttpClientModule } from '@angular/common/http';
+import {MockService} from '../../services/mock/mock.service';
 
 @Component({
   selector: 'app-stations',
@@ -563,7 +564,7 @@ export class StationsComponent implements OnInit, OnDestroy {
   ];
 
 
-  constructor(public activeRouter: ActivatedRoute, public weather: WeatherService, public ui: UiService, public api: ApiService, public measurementService: MeasurementsService) {
+  constructor(public activeRouter: ActivatedRoute, public weather: WeatherService, public ui: UiService, public api: ApiService, public measurementService: MeasurementsService, public mock: MockService) {
 
   }
 
@@ -580,8 +581,8 @@ export class StationsComponent implements OnInit, OnDestroy {
           this.stn = route.params.stn;
           this.cityIllustrationPath = '../../assets/cities/default.svg';
 
-          if(false){
-            return this.weatherData;
+          if(true){
+            return this.mock.measurementData;
           }
           return this.api.request('GET', '/api/measurements/all/test?stn=' + this.stn + '&limit=100');
         })

@@ -1,5 +1,5 @@
 .details-page__wrapper {
-  background: linear-gradient(to top, #86DBFF 0%, #e0c3fc 100%);
+  background: linear-gradient(to top, #e7717d 0%, #e0c3fc 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +11,7 @@
 }
 
 .details-page__wrapper-dark {
-  background: linear-gradient(#FC7DB8, #495CFC);
+  background: linear-gradient(#FC7DB8, #e7717d);
 }
 
 .background-gradient__circle {
@@ -30,7 +30,7 @@
 
 .background-gradient__circle-dark {
   transition: background 1s ease-in-out;
-  background: linear-gradient(to bottom, #FF8B8B, #6676FF);
+  background: linear-gradient(to bottom, #FF8B8B, #e7717d);
 }
 
 .main-weather__card {
@@ -198,17 +198,6 @@
   flex-flow: column;
 }
 
-.twitter__loader {
-  border: 3px solid hsla(185, 100%, 62%, 0.2);
-  border-top-color: #3cefff;
-  border-radius: 50%;
-  width: 3em;
-  height: 3em;
-  animation: spin 1s linear infinite;
-  justify-self: center;
-  align-self: center;
-  margin-top: 3rem;
-}
 
 @keyframes spin {
   to {
@@ -216,62 +205,6 @@
   }
 }
 
-
-.twitter-no-tweets__text {
-  margin-top: 3rem;
-  text-align: center;
-}
-
-.twitter-feed__text {
-  color: #0c1066;
-  font-size: 1.25rem;
-}
-
-.twitter__icon {
-  width: 1.5rem;
-}
-
-.twitter-feed-tag__text {
-  font-size: 0.85rem;
-  color: #5f84fb;
-  letter-spacing: 0.1rem;
-  text-transform: uppercase;
-}
-
-.twitter-feed__header {
-  display: grid;
-  grid-template-rows: 2rem;
-  grid-template-columns: 0.5fr 1.5fr 1fr;
-  align-items: center;
-  justify-items: center;
-  width: 100%;
-}
-
-
-.twitter-tweet__container {
-  margin-top: 2rem;
-}
-
-.tweet-user__wrapper {
-  display: flex;
-  margin-bottom: 0.5rem;
-}
-
-.tweet-avatar__image {
-  margin-right: 0.5rem;
-  border-radius: 50%;
-  height: 3rem;
-  width: 3rem;
-}
-
-.tweet-username__text {
-  display: block;
-  font-weight: bold;
-}
-
-.tweet__text {
-  margin-top: 0
-}
 
 .day-weather__container {
   display: flex;

@@ -6,7 +6,7 @@
         <div class="city-search-wrapper">
 
             <div class="city-search-header">
-                <h3 class="city-search-title">SEARCH CITIES</h3>
+                <h3 class="city-search-title">Zoek steden</h3>
                 <div class="search-city-input-wrapper">
                     <input class="search-city-input" auto-complete-placeholder="search city" placeholder="search city"
                            auto-complete [(ngModel)]="selectedCity"
@@ -24,7 +24,7 @@
             </div>
 
             <div class="city-search-body">
-                <span *ngIf="showCityNote" class="city-invalid-note">Nothing found</span>
+                <span *ngIf="showCityNote" class="city-invalid-note">Niks gevonden</span>
                 <app-weather-card (cityStored)="selectedCity = ''" *ngIf="cardCity" [city]="cardCity"
                                   [addMode]="true"></app-weather-card>
             </div>
@@ -42,7 +42,7 @@
             <div class="fav-city-image-overlay"></div>
 
             <div class="city-search-header">
-                <h3 class="city-search-title">SEARCH STATIONS</h3>
+                <h3 class="city-search-title">Zoek stations</h3>
                 <div class="search-city-input-wrapper">
                     <input class="search-station-input" auto-complete-placeholder="search station" placeholder="search station"
                            auto-complete [(ngModel)]="selectedStation"
@@ -60,7 +60,7 @@
             </div>
 
             <div class="station-search-body">
-                <span *ngIf="showStationNote" class="station-invalid-note">Nothing found</span>
+                <span *ngIf="showStationNote" class="station-invalid-note">Niks gevonden</span>
                 <app-station-card (stationStored)="selectedStation = ''" *ngIf="cardStation" [station]="cardStation.stn"
                                   [addMode]="true"></app-station-card>
             </div>

@@ -2,7 +2,7 @@
   <div class="signup-card">
 
     <main class="signup-content">
-      <span class="signup-header">Signup</span>
+      <span class="signup-header">Registreer</span>
       <!-- signup form -->
 
       <form class="signup-form" (ngSubmit)="signup($event)" #authform="ngForm">
@@ -13,7 +13,7 @@
                [disabled]="!authform.form.valid">
       </form>
       <div class="login-link-wrapper">
-        <span class="login-notice">Already Have an account?</span>
+        <span class="login-notice">Heb je al een account?</span>
         <a class="login-link" routerLink="/login">login</a>
       </div>
 
@@ -22,7 +22,7 @@
     <!-- linking to signup -->
     <aside class="signup-aside">
       <div class="signup-aside-overlay"></div>
-      <h1 class="signup-welcome-text">Join Today!</h1>
+      <h1 class="signup-welcome-text">Registreer vandaag!</h1>
       <hr class="signup-aside-hr">
     </aside>
   </div>

@@ -34,7 +34,7 @@ export class AuthService {
   }
 
   getEmail(){
-    return this.server.email;
+    return this.email;
   }
 
   isAuth() {
@@ -57,6 +57,7 @@ export class AuthService {
           this.token = response.id;
           this.email = response.email;
           this.server.setLoggedIn(true, this.token, this.email);
+          console.log(this.token);
           this.loggedIn.next(true);
           const userData = {
             email: this.email,
@@ -67,6 +68,10 @@ export class AuthService {
         }
       });
     }
+  }
+
+  setLoggenIn(){
+    this.server.setLoggedIn(true, "", "");
   }
 
   signup(email, pass) {
@@ -99,7 +104,6 @@ export class AuthService {
 
     let response: any = await this.server.request('GET', '/api/users/user/cities').toPromise();
     cities = response.cities;
-    console.log("2" + cities);
     return cities;
   }
 
@@ -108,6 +112,7 @@ export class AuthService {
 
     let response: any = await this.server.request('GET', '/api/users/user/stations').toPromise();
     stations = response.stations;
+    console.log(response);
     return stations;
   }
 

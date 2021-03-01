@@ -6,6 +6,8 @@ import {Subscription} from 'rxjs';
 import {first} from 'rxjs/operators';
 import {AuthService} from '../../services/auth/auth.service';
 import { ApiService } from '../../services/api/api.service';
+import {MockService} from "../../services/mock/mock.service";
+import {MeasurementsService} from "../../services/measurements/measurements.service";
 
 @Component({
   selector: 'app-station-card',
@@ -64,18 +66,26 @@ export class StationCardComponent implements OnInit, OnDestroy {
 
   @Input() set station (stn: string) {
     this.stationNumber = stn;
-    console.log("weather card "+stn);
-    this.api.request('GET', '/api/measurements/all/test?stn='+stn+'&limit=1').subscribe((response: any) => {
-        console.log(response[0]);
-      //this.state = response.weather[0].main;
-      this.temp = Math.ceil(response[0].tg);
-    },
-        (error) => {
-      this.errorMessage = error.error.message;
-      setTimeout(() => {
-        this.errorMessage = '';
-      }, 3000);
-    });
+    console.log("weather card " + stn);
+
+    let measurementUI = this.measurementService.converter(this.mock.measurementData[0]);
+    //this.state = response.weather[0].main;
+    this.temp = Math.ceil(measurementUI.tg);
+    if (false) {
+
+      this.api.request('GET', '/api/measurements/all/test?stn=' + stn + '&limit=1').subscribe((response: any) => {
+            console.log(response[0]);
+            let measurementUI = this.measurementService.converter(response[0]);
+            //this.state = response.weather[0].main;
+            this.temp = Math.ceil(measurementUI.tg);
+          },
+          (error) => {
+            this.errorMessage = error.error.message;
+            setTimeout(() => {
+              this.errorMessage = '';
+            }, 3000);
+          });
+    }
 
   }
 
@@ -95,7 +105,9 @@ export class StationCardComponent implements OnInit, OnDestroy {
               public router: Router,
               public ui: UiService,
               public auth: AuthService,
-              public api: ApiService) {
+              public api: ApiService,
+              public mock: MockService,
+              public measurementService: MeasurementsService) {
   }
 
   ngOnInit() {

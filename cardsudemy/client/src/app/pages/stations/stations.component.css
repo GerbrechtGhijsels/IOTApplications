@@ -1,5 +1,5 @@
 .details-page__wrapper {
-  background: linear-gradient(to top, #86DBFF 0%, #e0c3fc 100%);
+  background: linear-gradient(to top, #e7717d 0%, #e0c3fc 100%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +11,7 @@
 }
 
 .details-page__wrapper-dark {
-  background: linear-gradient(#FC7DB8, #495CFC);
+  background: linear-gradient(#FC7DB8, #e7717d);
 }
 
 .background-gradient__circle {
@@ -30,7 +30,7 @@
 
 .background-gradient__circle-dark {
   transition: background 1s ease-in-out;
-  background: linear-gradient(to bottom, #FF8B8B, #6676FF);
+  background: linear-gradient(to bottom, #FF8B8B, #e7717d);
 }
 
 .main-weather__card {

@@ -5,12 +5,12 @@
     align-items: center;
     flex-flow: column;
     transition: background 300ms linear;
-    background-image: linear-gradient(to top, #5ee7df 0%, #66a6ff 100%);
+    background-image: linear-gradient(to top, #e7717d 0%, #ffa13f 100%);
 }
 
 .root__container-dark {
     /*background: linear-gradient(to top, #30cfd0 0%, #330867 100%);*/
-    background: linear-gradient(to bottom, #372865, #000000);
+    background: linear-gradient(to bottom, #e7717d, #711b86);
 }
 
 /*
@@ -85,7 +85,7 @@
 }
 
 .menu-header {
-    background: linear-gradient(to right, #00FF9B, #5f84fb);
+    background: linear-gradient(to right, #e7717d, #ffa13f);
     display: grid;
     grid-template-rows: 1fr 4fr;
     grid-template-columns: 1fr 4fr;
@@ -252,7 +252,7 @@
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
-    max-width: 5rem;
+    max-width: 6rem;
 }
 
 .date__text {

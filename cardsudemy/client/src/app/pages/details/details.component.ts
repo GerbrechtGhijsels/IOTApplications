@@ -37,7 +37,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
     });
 
     const todayNumberInWeek = new Date().getDay();
-    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const days = ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'];
     this.today = days[todayNumberInWeek];
     this.sub2 = this.activeRouter.paramMap.pipe(concatMap((route: any) => {
         this.city = route.params.city;
