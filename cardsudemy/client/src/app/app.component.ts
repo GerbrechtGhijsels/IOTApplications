@@ -28,7 +28,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
 
     this.userEmail = this.auth.getEmail();
-    this.userEmail = this.mock.user.email;
+    //this.userEmail = this.mock.user.email;
 
   }
 

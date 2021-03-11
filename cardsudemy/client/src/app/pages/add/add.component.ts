@@ -104,7 +104,7 @@ export class AddComponent implements OnInit, OnDestroy {
          **/
 
         this.stationList = this.mock.stationData;
-        if(false) {
+        if(true) {
             this.api.request('GET', '/api/stations').subscribe((response: any) => {
                 this.setStations(response);
             });
@@ -144,9 +144,9 @@ export class AddComponent implements OnInit, OnDestroy {
             /// get source
             this.source = this.map.getSource('stations');
 
-            this.setStations(this.mock.stationData);
+            //this.setStations(this.mock.stationData);
             this.setMarkers(this.stationList);
-            if(false) {
+            if(true) {
                 this.api.request('GET', '/api/stations').subscribe((response: any) => {
                     this.setStations(response);
                     this.setMarkers(this.stationList);

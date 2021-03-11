@@ -68,10 +68,10 @@ export class StationCardComponent implements OnInit, OnDestroy {
     this.stationNumber = stn;
     console.log("weather card " + stn);
 
-    let measurementUI = this.measurementService.converter(this.mock.measurementData[0]);
+    //let measurementUI = this.measurementService.converter(this.mock.measurementData[0]);
     //this.state = response.weather[0].main;
-    this.temp = Math.ceil(measurementUI.tg);
-    if (false) {
+    //this.temp = Math.ceil(measurementUI.tg);
+    if (true) {
 
       this.api.request('GET', '/api/measurements/all/test?stn=' + stn + '&limit=1').subscribe((response: any) => {
             console.log(response[0]);
@@ -130,7 +130,7 @@ export class StationCardComponent implements OnInit, OnDestroy {
 
   addStation() {
     this.auth.addStation(this.stationNumber).subscribe(() => {
-
+      this.stationAdded = true;
       this.stationStored.emit();
       setTimeout(() => this.stationAdded = false, 2000);
     });

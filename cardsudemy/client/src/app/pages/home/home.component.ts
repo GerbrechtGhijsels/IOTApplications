@@ -15,10 +15,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.cities = this.auth.getCities();
-    //this.stations = this.auth.getStations();
-    this.auth.setLoggenIn();
-    this.cities = this.mock.cities.cities;
-    this.stations = this.mock.stations.stations;
+    this.cities = this.auth.getCities();
+    this.stations = this.auth.getStations();
+    //this.auth.setLoggenIn();
+    //this.cities = this.mock.cities.cities;
+    //this.stations = this.mock.stations.stations;
   }
 }
