@@ -2,22 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="92ea48b0-93cb-4004-b7cd-e66cb8ab1b2d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Report.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../~$Report.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/angular.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/oud/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/oud/README.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/oud/generate.sh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/client/oud/openssl-custom.cnf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/guards/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/guards/auth.guard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/pages/add/add.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/pages/add/add.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/pages/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/pages/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/pages/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/pages/home/home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/pages/stations/stations.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/pages/stations/stations.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/app/ui/station-card/station-card.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/app/ui/station-card/station-card.component.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -557,12 +546,12 @@
       <workItem from="1613728782234" duration="6361000" />
       <workItem from="1614006051831" duration="4491000" />
       <workItem from="1614338943721" duration="2453000" />
-      <workItem from="1614775146095" duration="7466000" />
+      <workItem from="1614775146095" duration="7525000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="330792000" />
+    <option name="totallyTimeSpent" value="330851000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-180" width="1920" height="1080" extended-state="6" />
