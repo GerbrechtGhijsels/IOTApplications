@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: measurements-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: measurements
+  template:
+    metadata:
+      labels:
+        app: measurements
+    spec:
+      containers:
+        - name: measurements
+          image: gg/measurements
+          env:
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: measuring
+            - name: MONGO_URI
+              value: 'mongodb://measurements-mongo-srv:27017/measurements'
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: measurements-srv
+spec:
+  selector:
+    app: measurements
+  ports:
+    - name: measurements
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

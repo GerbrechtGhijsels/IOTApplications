@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stations-mongo-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stations-mongo
+  template:
+    metadata:
+      labels:
+        app: stations-mongo
+    spec:
+      containers:
+        - name: stations-mongo
+          image: mongo
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stations-mongo-srv
+spec:
+  type: NodePort
+  selector:
+    app: stations-mongo
+  ports:
+    - name: db
+      protocol: TCP
+      port: 27017
+      targetPort: 27017
+      nodePort: 30007

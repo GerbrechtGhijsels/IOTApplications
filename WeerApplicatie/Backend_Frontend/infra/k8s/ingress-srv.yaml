@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+spec:
+  rules:
+    - host: measuring.gg
+      http:
+        paths:
+          - path: /api/users/?(.*)
+            backend:
+              serviceName: auth-srv
+              servicePort: 3000
+          - path: /api/measurements/?(.*)
+            backend:
+              serviceName: measurements-srv
+              servicePort: 3000
+          - path: /api/stations/?(.*)
+            backend:
+              serviceName: stations-srv
+              servicePort: 3000
+          - path: /api/requester/?(.*)
+            backend:
+              serviceName: requester-srv
+              servicePort: 3000
+          - path: /?(.*)
+            backend:
+              serviceName: client-srv
+              servicePort: 3000
+          - path: /swagger-ui
+            backend:
+              serviceName: swagger-ui
+              servicePort: 80

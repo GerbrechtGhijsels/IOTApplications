@@ -1,0 +1,87 @@
+<!-- Slide Menu-->
+<aside class="side-menu__container" [ngClass]="{'side-menu__container-active': showMenu}" (click)="toggleMenu()">
+  <nav class="slide-menu" [ngClass]="{'slide-menu-active': showMenu, 'slide-menu-active-dark': darkModeActive}"
+       (click)="$event.stopImmediatePropagation();">
+    <section class="menu-header" [ngClass]="{'menu-header-dark': darkModeActive}">
+      <span class="greeting__text">Welkom</span>
+      <div class="profile-image__container">
+        <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" alt="profile-image"
+             class="profile__image">
+      </div>
+      <div class="account-details">
+        <span class="name__text">{{userEmail}}</span>
+      </div>
+    </section>
+    <section class="menu-body">
+      <ul class="menu-links" [ngClass]="{'menu-links-dark': darkModeActive}">
+        <li class="menu-link" [routerLinkActiveOptions]="{exact:true}" routerLink="/" routerLinkActive="link-active" (click)="toggleMenu()">Home</li>
+        <li class="menu-link" [routerLinkActiveOptions]="{exact:true}" routerLink="/add" routerLinkActive="link-active" (click)="toggleMenu()">Voeg stad/station toe</li>
+        <li (click)="logout()" class="menu-link">Logout</li>
+      </ul>
+    </section>
+    <section class="menu-footer">
+
+      <small class="copyright__text">Copyright © 2021 GG</small>
+    </section>
+  </nav>
+</aside>
+
+<main class="root__container" [ngClass]="{'root__container-dark': darkModeActive}">
+  <header [ngClass]="{'main__header-dark': darkModeActive}" class="main__header" *ngIf="loggedIn ">
+
+    <div class="left__section">
+      <svg (click)="toggleMenu()" class="hamburger__icon" id="Menu_Burger_Icon" data-name="Menu Burger Icon"
+           viewBox="31.5 30 49.9 32">
+        <defs>
+          <style>.hamburger__icon__fill {
+            fill: #594e78
+          }</style>
+        </defs>
+        <rect id="Rectangle_9" width="49.9" height="4" [ngClass]="{'hamburger__icon__fill-dark': darkModeActive}"
+              class="hamburger__icon__fill" data-name="Rectangle 9" rx="2"
+              transform="translate(31.5 58)"></rect>
+        <rect id="Rectangle_10" width="49.9" height="4" [ngClass]="{'hamburger__icon__fill-dark': darkModeActive}"
+              class="hamburger__icon__fill" data-name="Rectangle 10" rx="2"
+              transform="translate(31.5 44)"></rect>
+        <rect id="Rectangle_11" width="49.9" height="4" [ngClass]="{'hamburger__icon__fill-dark': darkModeActive}"
+              class="hamburger__icon__fill" data-name="Rectangle 11" rx="2"
+              transform="translate(31.5 30)"></rect>
+      </svg>
+
+      <svg class="logo__icon" viewBox="150.3 22.2 250.7 42.8">
+        <path fill="M507.351000,14.772000L505.039000,6.962000L497.229000,4.649000C495.779000,4.219000,461.070000,-5.755000,406.525000,4.903000C375.091000,11.045000,343.219000,22.802000,311.796000,39.847000C272.922000,60.934000,234.600000,90.238000,197.893000,126.944000C118.706000,206.131000,70.216000,284.866000,43.483000,336.972000C14.322000,393.810000,4.061000,431.664000,3.638000,433.247000L0,446.883000L48.840000,463.159000L65.116000,512L78.753000,508.362000C80.336000,507.939000,118.191000,497.678000,175.028000,468.517000C227.134000,441.783000,305.867000,393.294000,385.055000,314.106000C421.761000,277.400000,451.065000,239.078000,472.153000,200.204000C489.199000,168.780000,500.956000,136.909000,507.096000,105.475000C517.755000,50.932000,507.782000,16.223000,507.351000,14.772000ZM195.664000,423C183.622000,430.019000,172.410000,436.120000,162.266000,441.344000C127.416000,459.289000,99.815000,469.838000,84.448000,475.109000L72.560000,439.440000L36.891000,427.553000C42.166000,412.183000,52.714000,384.581000,70.657000,349.736000C75.881000,339.593000,81.982000,328.380000,89,316.338000L195.664000,316.338000L195.664000,423ZM225.667000,404.591000L225.667000,286.334000L107.409000,286.334000C117.094000,271.308000,128.037000,255.419000,140.374000,238.950000L140.374000,239.010000L272.990000,239.010000L272.990000,371.625000L273.050000,371.625000C256.581000,383.963000,240.692000,394.906000,225.667000,404.591000ZM477.242000,101.777000C471.482000,130.015000,460.645000,158.779000,445.033000,187.272000C425.381000,223.133000,398.064000,258.670000,363.840000,292.893000C343.352000,313.381000,322.910000,331.715000,302.992000,348.098000L302.992000,209.007000L163.902000,209.007000C180.286000,189.089000,198.619000,168.647000,219.107000,148.159000C253.330000,113.936000,288.867000,86.619000,324.728000,66.967000C353.220000,51.354000,381.984000,40.516000,410.222000,34.758000C430.521000,30.618000,447.651000,29.734000,460.689000,30.094000L407.558000,83.225000L428.773000,104.440000L481.904000,51.309000C482.266000,64.349000,481.382000,81.479000,477.242000,101.777000Z" data-name="Path 2"></path>
+        <text [ngClass]="{'logo__text-dark': darkModeActive}" class="logo__text" fill="#432c85"
+              font-family="SegoeUI-Semibold,Segoe UI" font-size="30" font-weight="600"
+              letter-spacing=".1em" transform="translate(220 56)">
+          <tspan x="0" y="0">WindBoard</tspan>
+        </text>
+      </svg>
+
+    </div>
+
+    <h3 class="date__text"></h3>
+
+
+    <div class="mode-toggle__container">
+      <span class="mode-toggle__text">Licht</span>
+
+      <label class="toggle-button__container">
+        <input (click)="modeToggleSwitch()" type="checkbox" class="mode-toggle__input"/>
+        <span [ngClass]="{'mode-toggle__bg-checked': darkModeActive}" class="mode-toggle__bg"></span>
+        <span [ngClass]="{'mode-toggle__circle-checked': darkModeActive}" class="mode-toggle__circle"></span>
+      </label>
+
+
+      <span class="mode-toggle__text">Donker</span>
+    </div>
+
+  </header>
+
+  <!-- Main Content -->
+
+  <div class="main-container__bg">
+    <router-outlet></router-outlet>
+  </div>
+
+
+</main>
