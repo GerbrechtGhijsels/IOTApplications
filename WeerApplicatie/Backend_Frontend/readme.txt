@@ -96,7 +96,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/mast
 -----------------------------------------------------------
 etc/host
 
-sudo nano /etc/hosts   127.0.0.1 measuring.dev
+sudo nano /etc/hosts   127.0.0.1 measuring.gg
 
 -----------------------------------------------------------
 SSL ANGULAR
